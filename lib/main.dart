@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:optiglamcustomer/constants.dart';
+import 'package:optiglamcustomer/src/constants/constants.dart';
+import 'src/features/welcome/screens/splash_screen.dart';
+import 'src/features/welcome/screens/landing_page.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const OptiGlamCustomer());
@@ -10,7 +13,7 @@ class OptiGlamCustomer extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
@@ -27,12 +30,15 @@ class OptiGlamCustomer extends StatelessWidget {
         textTheme: const TextTheme(
           bodyMedium: TextStyle(
             color: kBlack,
+            fontFamily: 'Poppins',
           ),
           bodyLarge: TextStyle(
             color: kBlack,
+            fontFamily: 'Poppins',
           ),
           bodySmall: TextStyle(
             color: kBlack,
+            fontFamily: 'Poppins',
           ),
         ),
       ),
@@ -50,15 +56,19 @@ class OptiGlamCustomer extends StatelessWidget {
         textTheme: const TextTheme(
           bodyMedium: TextStyle(
             color: kWhite,
+            fontFamily: 'Poppins',
           ),
           bodyLarge: TextStyle(
             color: kWhite,
+            fontFamily: 'Poppins',
           ),
           bodySmall: TextStyle(
             color: kWhite,
+            fontFamily: 'Poppins',
           ),
         ),
       ),
+      home: LandingPage(),
     );
   }
 }
