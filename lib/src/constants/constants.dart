@@ -11,6 +11,26 @@ const kNormal = TextStyle(
   fontSize: 16,
   fontFamily: 'Poppins',
 );
+const kNormalBlack = TextStyle(
+  fontSize: 16,
+  fontFamily: 'Poppins',
+  color: kBlack
+);
+const kNormalBarbiePink = TextStyle(
+    fontSize: 16,
+    fontFamily: 'Poppins',
+    color: kBarbiePink,
+);
+const kSmallGrey = TextStyle(
+    fontSize: 14,
+    fontFamily: 'Poppins',
+    color: kGrey,
+  fontWeight: FontWeight.w200
+);
+const kSmall = TextStyle(
+  fontSize: 12,
+  fontFamily: 'Poppins',
+);
 const kNormalBold = TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.bold,
@@ -20,6 +40,12 @@ const kH1 = TextStyle(
   fontSize: 24,
   fontWeight: FontWeight.bold,
   fontFamily: 'Poppins',
+);
+const kH3Black = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'Poppins',
+  color: kBlack,
 );
 const kH2 = TextStyle(
   fontSize: 22,
