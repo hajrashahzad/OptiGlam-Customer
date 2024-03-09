@@ -14,3 +14,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+# OptiGlam-Customer
+Our final year which is basically a virtual try on solution for make-up products. This project aims to establish a centralized online platform catering to users seeking skin-tone specific cosmetic products such as concealers and foundations from different Pakistani Brands
