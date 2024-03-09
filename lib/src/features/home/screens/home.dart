@@ -5,8 +5,8 @@ import '../controllers/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dashboard.dart';
-import 'dummy1.dart';
-import 'dummy2.dart';
+import '../../shop/screens/shop_main.dart';
+import '../../profile/screens/profile.dart';
 class Home extends StatelessWidget {
   Home({super.key});
   final homeController = Get.put(HomeController());
@@ -36,8 +36,8 @@ class Home extends StatelessWidget {
         ),
         body: <Widget>[
           Dashboard(),
-          DummyOne(),
-          DummyTwo(),
+          Shop(),
+          ProfilePage(),
         ][homeController.currentPageIndex.value],
       ),
     );

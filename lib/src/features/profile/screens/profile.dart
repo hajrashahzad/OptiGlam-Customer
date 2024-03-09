@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../constants/constants.dart';
 import '../../../common widgets/custom_app_bar.dart';
 
-class DummyTwo extends StatelessWidget {
-  const DummyTwo({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {

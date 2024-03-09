@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:optiglamcustomer/src/features/home/screens/dummy3.dart';
+import 'package:optiglamcustomer/src/features/shop/screens/product_display.dart';
 import '../../../constants/constants.dart';
 import '../../../common widgets/custom_app_bar.dart';
-class DummyOne extends StatelessWidget {
-  const DummyOne({super.key});
+class Shop extends StatelessWidget {
+  const Shop({super.key});
 
   @override
   Widget build(BuildContext context) {
