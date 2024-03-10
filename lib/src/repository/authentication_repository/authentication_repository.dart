@@ -44,7 +44,13 @@ class AuthenticationRepository extends GetxController{
       await _auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch(e) {
       final ex = AuthenticationFailure.code(e.code);
-    } catch(_) {}
+      print('Firebase Auth Error: ${ex.message}');
+      throw ex;
+    } catch(_) {
+      final ex = AuthenticationFailure();
+      print('Firebase Auth Error: ${ex.message}');
+      throw ex;
+    }
     
   }
 
