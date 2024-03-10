@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:optiglamcustomer/src/repository/authentication_repository/authentication_repository.dart';
 import '../constants/constants.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
@@ -60,7 +61,9 @@ class CustomAppBar extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  AuthenticationRepository.instance.logout();
+                },
                 child: Icon(
                   Icons.logout_outlined,
                   color: kBarbiePink,
