@@ -41,6 +41,11 @@ const kH1 = TextStyle(
   fontWeight: FontWeight.bold,
   fontFamily: 'Poppins',
 );
+const kRegularBlackH1 = TextStyle(
+  fontSize: 24,
+  fontFamily: 'Poppins',
+  color: kBlack,
+);
 const kH3Black = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.bold,
