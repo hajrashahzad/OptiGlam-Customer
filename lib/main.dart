@@ -3,8 +3,14 @@ import 'package:optiglamcustomer/src/constants/constants.dart';
 import 'src/features/welcome/screens/splash_screen.dart';
 import 'src/features/welcome/screens/landing_page.dart';
 import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
   runApp(const OptiGlamCustomer());
 }
 
