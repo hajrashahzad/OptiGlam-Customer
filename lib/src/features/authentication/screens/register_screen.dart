@@ -4,6 +4,7 @@ import '../../../constants/constants.dart';
 import 'login_screen.dart';
 import '../../home/screens/home.dart';
 import 'package:get/get.dart';
+import '../models/user_model.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});
@@ -237,7 +238,13 @@ class RegisterScreen extends StatelessWidget {
                               child: ElevatedButton(
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
-                                    RegisterScreenController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
+                                    final user = UserModel(
+                                      fullName: controller.fullName.text,
+                                      email: controller.email.text.trim(),
+                                      phone: controller.phoneNumber.text.trim(),
+                                      location: controller.location.text,
+                                    );
+                                    RegisterScreenController.instance.registerUser(user, controller.password.text.trim());
                                   }
                                   // Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
                                 },
