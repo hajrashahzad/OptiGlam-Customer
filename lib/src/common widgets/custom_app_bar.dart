@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/common%20controllers/common_controller.dart';
 import '../constants/constants.dart';
 import '../features/shop/screens/cart.dart';
-import 'package:optiglamcustomer/src/repository/user_repository/user_repository.dart';
+import 'package:optiglamcustomer/src/features/authentication/models/user_model.dart';
 import 'package:get/get.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
