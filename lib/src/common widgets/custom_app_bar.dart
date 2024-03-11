@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants/constants.dart';
+import '../features/shop/screens/cart.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
@@ -48,7 +49,9 @@ class CustomAppBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Cart()));
+                },
                 child: Icon(
                   Icons.shopping_cart_outlined,
                   color: kBarbiePink,

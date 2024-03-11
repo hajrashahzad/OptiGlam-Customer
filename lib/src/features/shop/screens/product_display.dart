@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import '../../../constants/constants.dart';
 import '../../../common widgets/custom_app_bar.dart';
+import '../../../common widgets/product_display_button.dart';
+import 'product_details.dart';
 
 class ProductDisplay extends StatelessWidget {
   const ProductDisplay({super.key});
-
   @override
   Widget build(BuildContext context) {
+    //TODO: write a function that converts your array of objects that you will get from your controller in an array of widgets
+    String productId = '23345';
     return SafeArea(
         child: Container(
           color: kWhite,
@@ -42,104 +45,13 @@ class ProductDisplay extends StatelessWidget {
                 Container(
                   child: Column(
                     children: [
-                      TextButton(
-                        onPressed: (){},
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          decoration: BoxDecoration(
-                            color: kBackgroundGrey,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 100,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  color: kGrey,
-                                  borderRadius: BorderRadius.horizontal(left: Radius.circular(30), right: Radius.zero)
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Product Name', style: kNormalBlack,),
-                                    Text('Product Price', style: kSmallGrey,),
-                                    Text('Product Details', style: kSmallGrey,),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: (){},
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          decoration: BoxDecoration(
-                            color: kBackgroundGrey,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 100,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                    color: kGrey,
-                                    borderRadius: BorderRadius.horizontal(left: Radius.circular(30), right: Radius.zero)
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Product Name', style: kNormalBlack,),
-                                    Text('Product Price', style: kSmallGrey,),
-                                    Text('Product Details', style: kSmallGrey,),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: (){},
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          decoration: BoxDecoration(
-                            color: kBackgroundGrey,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 100,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                    color: kGrey,
-                                    borderRadius: BorderRadius.horizontal(left: Radius.circular(30), right: Radius.zero)
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Product Name', style: kNormalBlack,),
-                                    Text('Product Price', style: kSmallGrey,),
-                                    Text('Product Details', style: kSmallGrey,),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      ProductDisplayButton(
+                        productName: 'Product Name',
+                        productDetails: 'Details',
+                        productPrice: '2300 PKR',
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails(productId: productId,)));
+                        },
                       ),
                     ],
                   ),
@@ -147,7 +59,9 @@ class ProductDisplay extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
     );
   }
 }
+
+

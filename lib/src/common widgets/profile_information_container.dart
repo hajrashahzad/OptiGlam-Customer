@@ -3,9 +3,9 @@ import '../constants/constants.dart';
 
 class ProfileInformationContainer extends StatelessWidget {
   ProfileInformationContainer({super.key, required this.fieldTitle, required this.value, required this.icon});
-  String fieldTitle;
-  String value;
-  IconData icon;
+  final String fieldTitle;
+  final String value;
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return Container(
