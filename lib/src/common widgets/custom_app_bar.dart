@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:optiglamcustomer/src/common%20controllers/common_controller.dart';
+import 'package:optiglamcustomer/src/features/authentication/models/user_model.dart';
 import 'package:optiglamcustomer/src/repository/authentication_repository/authentication_repository.dart';
 import '../constants/constants.dart';
+import 'package:get/get.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
@@ -8,6 +11,7 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CommonController());
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -24,14 +28,30 @@ class CustomAppBar extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Hello, User!',
-                    style: TextStyle(
-                      color: kBlack,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Poppins',
-                    ),
+                  FutureBuilder(
+                    future: controller.getUserData(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        if (snapshot.hasData) {
+                          UserModel userData = snapshot.data as UserModel;
+                          return Text(
+                            'Hello, ${userData.fullName}!',
+                            style: TextStyle(
+                              color: kBlack,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'Poppins',
+                            ),
+                          );
+                        }
+                        else {
+                          return CircularProgressIndicator();
+                        }
+                      }
+                      else {
+                        return CircularProgressIndicator();
+                      }
+                    }
                   ),
                   Text(
                     'Good Morning',
