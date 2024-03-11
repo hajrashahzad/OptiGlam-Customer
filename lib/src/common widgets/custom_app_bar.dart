@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/common%20controllers/common_controller.dart';
-import 'package:optiglamcustomer/src/features/authentication/models/user_model.dart';
-import 'package:optiglamcustomer/src/repository/authentication_repository/authentication_repository.dart';
 import '../constants/constants.dart';
+import '../features/shop/screens/cart.dart';
+import 'package:optiglamcustomer/src/features/authentication/models/user_model.dart';
 import 'package:get/get.dart';
+import 'package:optiglamcustomer/src/repository/authentication_repository/authentication_repository.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
@@ -69,7 +70,9 @@ class CustomAppBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Cart()));
+                },
                 child: Icon(
                   Icons.shopping_cart_outlined,
                   color: kBarbiePink,

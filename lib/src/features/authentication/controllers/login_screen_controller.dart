@@ -4,13 +4,14 @@ import 'package:optiglamcustomer/src/repository/authentication_repository/authen
 
 class LoginScreenController extends GetxController{
   static LoginScreenController get instance => Get.find();
+  final _authRepo = Get.put(AuthenticationRepository());
 
   //TextField Controllers to get form data
   final email = TextEditingController();
   final password = TextEditingController();
 
   void signInUser(String email, String password) {
-    AuthenticationRepository.instance.loginUserWithEmailAndPassword(email, password);
+    _authRepo.loginUserWithEmailAndPassword(email, password);
   }
 
 }

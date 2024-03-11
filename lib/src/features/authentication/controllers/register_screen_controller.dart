@@ -6,7 +6,8 @@ import '../models/user_model.dart';
 
 class RegisterScreenController extends GetxController{
   static RegisterScreenController get instance => Get.find();
-  final userRepo = Get.put(UserRepository());
+  final _userRepo = Get.put(UserRepository());
+  final _authRepo = Get.put(AuthenticationRepository());
 
   //TextField Controllers to get form data
   final fullName = TextEditingController();
@@ -17,8 +18,8 @@ class RegisterScreenController extends GetxController{
   final cnfrmPassword = TextEditingController();
 
   void registerUser(UserModel user, String password) {
-    userRepo.createUser(user);
-    AuthenticationRepository.instance.createUserWithEmailAndPassword(user.email, password);
+    _userRepo.createUser(user);
+    _authRepo.createUserWithEmailAndPassword(user.email, password);
   }
 
 }
