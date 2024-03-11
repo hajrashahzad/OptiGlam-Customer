@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "451404310347",
+    "project_id": "optiglam-customer-67b97",
+    "storage_bucket": "optiglam-customer-67b97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451404310347:android:64c6c2b933055cdc266ace",
+        "android_client_info": {
+          "package_name": "com.example.optiglamcustomer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3mpmYo455FQeYbMkxP_jhvCovrJaXsCM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
