@@ -4,6 +4,7 @@ import '../constants/constants.dart';
 import '../features/shop/screens/cart.dart';
 import 'package:optiglamcustomer/src/features/authentication/models/user_model.dart';
 import 'package:get/get.dart';
+import 'package:optiglamcustomer/src/repository/authentication_repository/authentication_repository.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
@@ -83,7 +84,9 @@ class CustomAppBar extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  AuthenticationRepository.instance.logout();
+                },
                 child: Icon(
                   Icons.logout_outlined,
                   color: kBarbiePink,
