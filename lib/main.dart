@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/constants/constants.dart';
+import 'package:optiglamcustomer/src/repository/authentication_repository/authentication_repository.dart';
 import 'src/features/welcome/screens/splash_screen.dart';
 import 'src/features/welcome/screens/landing_page.dart';
 import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  ).then((value) => Get.put(AuthenticationRepository()));
   runApp(const OptiGlamCustomer());
 }
 
