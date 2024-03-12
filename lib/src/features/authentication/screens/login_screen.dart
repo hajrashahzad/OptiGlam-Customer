@@ -99,7 +99,7 @@ class LoginScreen extends StatelessWidget {
                                 decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.email_outlined, color: kGrey, size: 16,),
                                   hintText: 'Email',
-                                  hintStyle: kSmall,
+                                  hintStyle: kSmallBlack,
                                   filled: true,
                                   fillColor: kBackgroundGrey,
                                   border: OutlineInputBorder(
@@ -116,7 +116,7 @@ class LoginScreen extends StatelessWidget {
                                 decoration: InputDecoration(
                                     prefixIcon: const Icon(Icons.lock_outline, color: kGrey, size: 16,),
                                     hintText: 'Password',
-                                    hintStyle: kSmall,
+                                    hintStyle: kSmallBlack,
                                     filled: true,
                                     fillColor: kBackgroundGrey,
                                     border: OutlineInputBorder(

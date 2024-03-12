@@ -132,7 +132,7 @@ class RegisterScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.person_outlined, color: kGrey, size: 16,),
                                   hintText: 'Full Name',
-                                  hintStyle: kSmall,
+                                  hintStyle: kSmallBlack,
                                   filled: true,
                                   fillColor: kBackgroundGrey,
                                   border: OutlineInputBorder(
@@ -149,7 +149,7 @@ class RegisterScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.email_outlined, color: kGrey, size: 16,),
                                   hintText: 'Email',
-                                  hintStyle: kSmall,
+                                  hintStyle: kSmallBlack,
                                   filled: true,
                                   fillColor: kBackgroundGrey,
                                   border: OutlineInputBorder(
@@ -166,7 +166,7 @@ class RegisterScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.phone_outlined, color: kGrey, size: 16,),
                                   hintText: 'Phone Number',
-                                  hintStyle: kSmall,
+                                  hintStyle: kSmallBlack,
                                   filled: true,
                                   fillColor: kBackgroundGrey,
                                   border: OutlineInputBorder(
@@ -183,7 +183,7 @@ class RegisterScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.pin_drop_outlined, color: kGrey, size: 16,),
                                   hintText: 'Location',
-                                  hintStyle: kSmall,
+                                  hintStyle: kSmallBlack,
                                   filled: true,
                                   fillColor: kBackgroundGrey,
                                   border: OutlineInputBorder(
@@ -200,7 +200,7 @@ class RegisterScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.lock_outline, color: kGrey, size: 16,),
                                   hintText: 'Password',
-                                  hintStyle: kSmall,
+                                  hintStyle: kSmallBlack,
                                   filled: true,
                                   fillColor: kBackgroundGrey,
                                   border: OutlineInputBorder(
@@ -217,7 +217,7 @@ class RegisterScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.lock_open, color: kGrey, size: 16,),
                                   hintText: 'Confirm Password',
-                                  hintStyle: kSmall,
+                                  hintStyle: kSmallBlack,
                                   filled: true,
                                   fillColor: kBackgroundGrey,
                                   border: OutlineInputBorder(

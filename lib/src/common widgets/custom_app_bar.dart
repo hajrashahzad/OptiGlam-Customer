@@ -36,7 +36,7 @@ class CustomAppBar extends StatelessWidget {
                         if (snapshot.hasData) {
                           UserModel userData = snapshot.data as UserModel;
                           return Text(
-                            'Hello, ${userData.fullName}!',
+                             'Hello, ${userData.fullName}!',
                             style: TextStyle(
                               color: kBlack,
                               fontSize: 14,
