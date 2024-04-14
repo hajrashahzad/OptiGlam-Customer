@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/constants/constants.dart';
+import 'package:optiglamcustomer/src/features/shade%20analysis/screens/skintone_analysis_welcome.dart';
 import '../../../common widgets/custom_app_bar.dart';
+import '../../shade analysis/screens/skintone_analysis_welcome.dart';
 import '../controllers/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -49,7 +51,9 @@ class Dashboard extends StatelessWidget {
                       width: 10,
                     ),
                     TextButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SkinToneAnalysisWelcome()));
+                      },
                       style: TextButton.styleFrom(
                           padding: const EdgeInsets.fromLTRB(10, 0, 0, 0)
                       ),

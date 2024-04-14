@@ -79,7 +79,7 @@ class Cart extends StatelessWidget {
                     ],
                   ),
                   Divider(color: kGrey,),
-                  Text('Shipping and Taxes calculated at checkout.', style: kSmallGrey,),
+                  Text('Shipping and Taxes calculated at checkout.', style: kSmall14Grey,),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: SizedBox(
