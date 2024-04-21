@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/constants/constants.dart';
+import 'package:optiglamcustomer/src/features/home/screens/ar_preview.dart';
 import 'package:optiglamcustomer/src/features/shade%20analysis/screens/skintone_analysis_welcome.dart';
 import '../../../common widgets/custom_app_bar.dart';
+import 'ar_preview.dart';
 import '../../shade analysis/screens/skintone_analysis_welcome.dart';
 import '../controllers/home_controller.dart';
 import 'package:get/get.dart';
@@ -226,7 +228,9 @@ class Dashboard extends StatelessWidget {
                 height: 10,
               ),
               TextButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ARPreview()));
+                },
                 child: Container(
                   height: 192,
                   width: MediaQuery.of(context).size.width * 0.9,

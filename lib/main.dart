@@ -6,7 +6,7 @@ import 'src/features/welcome/screens/landing_page.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-
+//TODO: install pods and configure podfile for deepAR ios
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(

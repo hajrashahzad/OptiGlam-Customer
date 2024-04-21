@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/features/shade%20analysis/screens/analysis_camera.dart';
 import '../../../constants/constants.dart';
+import '../controllers/analysis_camera_controller.dart';
+import 'package:get/get.dart';
 import 'analysis_camera.dart';
 
 class SkinToneAnalysisWelcome extends StatelessWidget {
-  const SkinToneAnalysisWelcome({super.key});
-
+  SkinToneAnalysisWelcome({super.key});
+  ImagePickerController imagePickerController = Get.put(ImagePickerController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +35,8 @@ class SkinToneAnalysisWelcome extends StatelessWidget {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> CameraScreen()));
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => CameraScreen()));
                       },
                       style: ButtonStyle(
                         elevation: MaterialStateProperty.all<double>(8),
@@ -55,6 +58,7 @@ class SkinToneAnalysisWelcome extends StatelessWidget {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
+                        imagePickerController.getImageFromGallery();
                       },
                       style: ButtonStyle(
                         elevation: MaterialStateProperty.all<double>(8),
