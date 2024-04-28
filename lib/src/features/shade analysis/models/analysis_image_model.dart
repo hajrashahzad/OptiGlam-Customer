@@ -1,5 +1,4 @@
 import 'dart:io';
-
 class AnalysisImage {
   late File image;
   String? imagePath;

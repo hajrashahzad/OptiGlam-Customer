@@ -189,44 +189,42 @@ class ImageDisplayCard extends StatelessWidget {
                   ),
                   SizedBox(height: 5,),
                   Text('Please select the lighting Conditions of this image:', style: kSmall14Grey,),
-                  Obx(() => Column(
-                    children: [
-                      Card(
-                        child: Row(
+                  Card(
+                    child: Column(
+                      children: [
+                        Row(
                           children: [
-                            Radio(
-                              value: imagePickerController.imagesList.value[index].condition[0],
-                              groupValue: imagePickerController.imagesList.value[index].goodLight,
+                            Obx(() => Radio(
+                              value: true, //bool
+                              groupValue: imagePickerController.lightingConditionList[index].value,//imagePickerController.imagesList.value[index].goodLight, //bool
                               onChanged: (value){
                                 imagePickerController.updateLightingConditionAtIndex(value!, index);
                               },
-                            ),
+                            ),),
                             Text(
                               'good',
                               style: kNormalBlack,
                             ),
                           ],
                         ),
-                      ),
-                      Card(
-                        child: Row(
+                        Row(
                           children: [
-                            Radio(
-                              value: imagePickerController.imagesList.value[index].condition[1],
-                              groupValue: imagePickerController.imagesList.value[index].goodLight,
+                            Obx(() => Radio(
+                              value: false,
+                              groupValue:  imagePickerController.lightingConditionList[index].value, //bool
                               onChanged: (value){
                                 imagePickerController.updateLightingConditionAtIndex(value!, index);
                               },
-                            ),
+                            ),),
                             Text(
                               'poor',
                               style: kNormalBlack,
                             ),
                           ],
                         ),
-                      ),
-                    ],
-                  ),),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -236,99 +234,6 @@ class ImageDisplayCard extends StatelessWidget {
     );
   }
 }
-/*class PreviewScreen extends StatefulWidget {
-  const PreviewScreen({super.key});
 
-  @override
-  State<PreviewScreen> createState() => _PreviewScreenState();
-}
 
-class _PreviewScreenState extends State<PreviewScreen> {
-  ImagePickerController imagePickerController =
-      Get.put(ImagePickerController());
-  List<Widget> imgCardList = [];
-  void updateImageCardList() {
-    imgCardList = [];
-    for (var i = 0; i < imagePickerController.imagesList.length; i++) {
-      debugPrint("\n\n${imagePickerController.imagesList.length}\n");
-      imgCardList.add(
-          ImageDisplayCard(img: imagePickerController.imagesList[i]));
-    }
-  }
-  @override
-  Widget build(BuildContext context) {
-    if (imagePickerController.imagesList != null) {
-      updateImageCardList();
-      return SafeArea(
-        child: Container(
-          color: kWhite,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'Preview',
-                    style: kBoldBarbiePinkH1,
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  Column(
-                    children: imgCardList,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                          onPressed: () {
-                            setState(() {
-                              updateImageCardList();
-                            });
-                          },
-                          child: Icon(Icons.camera_alt_outlined)),
-                      TextButton(onPressed: () {}, child: Icon(Icons.image)),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
-    } else if (imagePickerController == null) {
-      return SafeArea(
-        child: Container(
-          color: kWhite,
-          child: Padding(
-            padding: EdgeInsets.all(8),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'Preview',
-                    style: kBoldBarbiePinkH1,
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  Text(
-                    'No images taken yet!',
-                    style: kRegularGreyH2,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
-    } else
-      return const Placeholder();
-  }
-}*/
+
