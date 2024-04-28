@@ -38,6 +38,13 @@ const kSmall14BarbiePink = TextStyle(
   fontWeight: FontWeight.w200,
   inherit: false,
 );
+const kSmall12Grey = TextStyle(
+  fontSize: 12,
+  fontFamily: 'Poppins',
+  color: kGrey,
+  fontWeight: FontWeight.w200,
+  inherit: false,
+);
 const kSmall = TextStyle(
   fontSize: 12,
   fontFamily: 'Poppins',

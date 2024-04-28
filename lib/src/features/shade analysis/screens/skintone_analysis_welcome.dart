@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:optiglamcustomer/src/features/shade%20analysis/screens/analysis_camera.dart';
+import 'package:optiglamcustomer/src/features/shade%20analysis/screens/preview_screen.dart';
 import '../../../constants/constants.dart';
-import '../controllers/analysis_camera_controller.dart';
+import '../controllers/image_picker_controller.dart';
 import 'package:get/get.dart';
-import 'analysis_camera.dart';
 
 class SkinToneAnalysisWelcome extends StatelessWidget {
   SkinToneAnalysisWelcome({super.key});
@@ -28,15 +27,15 @@ class SkinToneAnalysisWelcome extends StatelessWidget {
                 SizedBox(height: 30,),
                 Text('All you need to do is submit 3 of your photos in the best lighting!', style: kSmall14BarbiePink, textAlign: TextAlign.center,),
                 SizedBox(height: 100,),
-                Padding(
+                /*Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: SizedBox(
                     width:  MediaQuery.of(context).size.width * 0.9,
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => CameraScreen()));
+                        imagePickerController.getImageFromCamera();
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewScreen()));
                       },
                       style: ButtonStyle(
                         elevation: MaterialStateProperty.all<double>(8),
@@ -50,7 +49,7 @@ class SkinToneAnalysisWelcome extends StatelessWidget {
                       child: const Text("Open Camera", style: kSmall,),
                     ),
                   ),
-                ),
+                ),*/
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: SizedBox(
@@ -59,9 +58,12 @@ class SkinToneAnalysisWelcome extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {
                         imagePickerController.getImageFromGallery();
+                        debugPrint("Images gotten from gallery!");
+                        //Navigator.push(context,MaterialPageRoute(builder: (context) => CameraScreen()));
                       },
                       style: ButtonStyle(
-                        elevation: MaterialStateProperty.all<double>(8),
+                        elevation: MaterialStateProperty.all<double>(5),
+                        shadowColor: MaterialStateProperty.all<Color>(kBackgroundGrey),
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
@@ -71,6 +73,36 @@ class SkinToneAnalysisWelcome extends StatelessWidget {
                       ),
                       child: const Text("Open Gallery", style: kSmall,),
                     ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: SizedBox(
+                    width:  MediaQuery.of(context).size.width * 0.9,
+                    height: 50,
+                    child: Obx(() => ElevatedButton(
+                      onPressed: imagePickerController.isListEmpty.value ? null : () {
+                        Navigator.push(context,MaterialPageRoute(builder: (context) => PreviewScreen()));
+                      },
+                      style: imagePickerController.isListEmpty.value ? ButtonStyle(
+                        elevation: MaterialStateProperty.all<double>(0),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                        ),
+                        backgroundColor: MaterialStateProperty.all<Color>(kWhite),
+                      ) : ButtonStyle(
+                      elevation: MaterialStateProperty.all<double>(8),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ),
+                      backgroundColor: MaterialStateProperty.all<Color>(kBarbiePink),
+                    ),
+                      child: Text("Next", style: kSmall),
+                    ),),
                   ),
                 ),
               ],

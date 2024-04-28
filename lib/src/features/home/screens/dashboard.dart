@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/constants/constants.dart';
-import 'package:optiglamcustomer/src/features/home/screens/ar_preview.dart';
 import 'package:optiglamcustomer/src/features/shade%20analysis/screens/skintone_analysis_welcome.dart';
+import 'package:optiglamcustomer/src/features/try%20on/screens/filter_screen.dart';
 import '../../../common widgets/custom_app_bar.dart';
-import 'ar_preview.dart';
 import '../../shade analysis/screens/skintone_analysis_welcome.dart';
 import '../controllers/home_controller.dart';
 import 'package:get/get.dart';
@@ -229,11 +228,11 @@ class Dashboard extends StatelessWidget {
               ),
               TextButton(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ARPreview()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => FilterScreen()));
                 },
                 child: Container(
                   height: 192,
-                  width: MediaQuery.of(context).size.width * 0.9,
+                  width: MediaQuery.of(context).size.width * 0.91,
                   decoration: BoxDecoration(
                     color: kBlack,
                     borderRadius: BorderRadius.circular(25),
@@ -371,10 +370,10 @@ class Dashboard extends StatelessWidget {
                                 padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
                             ),
                           ),
-
                         ],
                       ),
                     ),
+                    SizedBox(height: 30,),
                   ],
                 ),
               ),

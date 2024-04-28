@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/constants/constants.dart';
-import '../../../common widgets/custom_app_bar.dart';
 import '../controllers/home_controller.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'dashboard.dart';
 import '../../shop/screens/shop_main.dart';
 import '../../profile/screens/profile.dart';
