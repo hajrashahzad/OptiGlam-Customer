@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/constants/constants.dart';
 import 'package:optiglamcustomer/src/features/shade%20analysis/screens/skintone_analysis_welcome.dart';
 import 'package:optiglamcustomer/src/features/try%20on/screens/filter_screen.dart';
+import 'package:optiglamcustomer/src/features/undertone%20analysis/screens/undertone_quiz.dart';
 import '../../../common widgets/custom_app_bar.dart';
-import '../../shade analysis/screens/skintone_analysis_welcome.dart';
-import '../controllers/home_controller.dart';
-import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
 
@@ -108,7 +106,9 @@ class Dashboard extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => QuizScreen()));
+                      },
                       style: TextButton.styleFrom(
                           padding: const EdgeInsets.fromLTRB(10, 0, 0, 0)
                       ),
