@@ -1,3 +1,8 @@
+plugins {
+        id "com.android.application"
+        id "kotlin-android"
+        id "dev.flutter.flutter-gradle-plugin"
+}
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -5,12 +10,6 @@ if (localPropertiesFile.exists()) {
         localProperties.load(reader)
     }
 }
-
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
-}
-
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
     flutterVersionCode = '1'
@@ -20,10 +19,6 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
-
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     namespace "com.example.optiglamcustomer"
@@ -48,7 +43,7 @@ android {
         applicationId "com.example.optiglamcustomer"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 23
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -60,6 +55,7 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -71,4 +67,10 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.multidex:multidex:2.0.1'
+    def camerax_version = "1.2.3"
+    implementation "androidx.camera:camera-core:$camerax_version"
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+    implementation "androidx.camera:camera-view:$camerax_version"
+
 }

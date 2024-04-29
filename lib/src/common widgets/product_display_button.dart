@@ -39,8 +39,8 @@ class ProductDisplayButton extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(productName, style: kNormalBlack,),
-                  Text(productPrice, style: kSmallGrey,),
-                  Text(productDetails, style: kSmallGrey,),
+                  Text(productPrice, style: kSmall14Grey,),
+                  Text(productDetails, style: kSmall14Grey,),
                 ],
               ),
             ),
