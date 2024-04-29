@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../constants/constants.dart';
-import '../../../common widgets/custom_app_bar.dart';
 import '../../../common widgets/profile_information_container.dart';
 import '../../../common widgets/settings_button.dart';
 
@@ -21,7 +20,7 @@ class ProfilePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 75,
                 ),
                 Stack(
@@ -43,11 +42,11 @@ class ProfilePage extends StatelessWidget {
                         height: 106,
                         decoration: BoxDecoration(
                           color: kBarbiePink,
-                          image: DecorationImage(
+                          image: const DecorationImage(
                             image: AssetImage('assets/images/user_profile.png'),
                             fit: BoxFit.cover,
                           ),
-                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                          borderRadius: const BorderRadius.all(Radius.circular(50)),
                           border: Border.all(
                             color: kBarbiePink,
                             width: 2.0,
@@ -69,11 +68,11 @@ class ProfilePage extends StatelessWidget {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.88,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: kBackgroundGrey,
                     borderRadius: BorderRadius.all(Radius.circular(25)),
                   ),
-                  child: Column(
+                  child: const Column(
                     children: [
                       ProfileInformationContainer(
                         fieldTitle: 'Name',
@@ -100,10 +99,10 @@ class ProfilePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Text(
+                const Text(
                   'Settings',
                   style: kRegularBlackH1,
                 ),
@@ -112,11 +111,11 @@ class ProfilePage extends StatelessWidget {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.88,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: kBackgroundGrey,
                     borderRadius: BorderRadius.all(Radius.circular(25)),
                   ),
-                  child: Column(
+                  child: const Column(
                     children: [
                       SettingsButton(
                         fieldValue: 'Change Username',
@@ -137,7 +136,7 @@ class ProfilePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 )
               ],

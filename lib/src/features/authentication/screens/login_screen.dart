@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      child: Image(
+                      child: const Image(
                         image: AssetImage('assets/images/login.png'),
                       ),
                     ),
@@ -41,8 +41,8 @@ class LoginScreen extends StatelessWidget {
                         color: kBarbiePink,
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                      margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -50,7 +50,6 @@ class LoginScreen extends StatelessWidget {
                             child: Expanded(
                               child: ElevatedButton(
                                 onPressed: () {},
-                                child: Text('Login', style: kNormal,),
                                 style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.all<Color>(kWhite),
@@ -61,8 +60,9 @@ class LoginScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
                                   ),
-                                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.all(10),),
+                                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(10),),
                                 ),
+                                child: const Text('Login', style: kNormal,),
                               ),
                             ),
                           ),
@@ -72,7 +72,6 @@ class LoginScreen extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
                                 },
-                                child: Text('Register', style: kNormal,),
                                 style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.all<Color>(kBarbiePink),
@@ -82,6 +81,7 @@ class LoginScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+                                child: const Text('Register', style: kNormal,),
                               ),
                             ),
                           ),
@@ -128,9 +128,9 @@ class LoginScreen extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 1.0),
-                              child: TextButton(onPressed: (){}, child: Text('Forgot Password', style: TextStyle(fontFamily: 'Poppins'),),),
+                              child: TextButton(onPressed: (){}, child: const Text('Forgot Password', style: TextStyle(fontFamily: 'Poppins'),),),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height:25,
                             ),
                             Padding(
@@ -161,8 +161,8 @@ class LoginScreen extends StatelessWidget {
                           ],
                         ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 10),
                       child: Text('OR', style: TextStyle(
                         color: kGrey,
                       ),),

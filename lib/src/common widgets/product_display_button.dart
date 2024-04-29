@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants/constants.dart';
 
 class ProductDisplayButton extends StatelessWidget {
-  ProductDisplayButton({
+  const ProductDisplayButton({
     super.key,
     required this.productName,
     required this.productDetails,
@@ -28,7 +28,7 @@ class ProductDisplayButton extends StatelessWidget {
             Container(
               width: 100,
               height: 100,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: kGrey,
                   borderRadius: BorderRadius.horizontal(left: Radius.circular(30), right: Radius.zero)
               ),

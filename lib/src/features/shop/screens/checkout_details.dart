@@ -25,7 +25,7 @@ class CheckoutDetails extends StatelessWidget {
                   children: [
                     const SizedBox(height: 20,),
                     const Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: EdgeInsets.only(left: 10),
                       child: Text(
                         'Confirm your\n details!',
                         style: TextStyle(
@@ -38,7 +38,7 @@ class CheckoutDetails extends StatelessWidget {
                       ),
                     ),
                     const Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: EdgeInsets.only(left: 10),
                       child: Text(
                         'Come back again!',
                         style: TextStyle(
@@ -118,7 +118,7 @@ class CheckoutDetails extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height:25,
                           ),
                           Padding(
@@ -128,7 +128,7 @@ class CheckoutDetails extends StatelessWidget {
                               height: 50,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutBill()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const CheckoutBill()));
                                 },
                                 style: ButtonStyle(
                                   elevation: MaterialStateProperty.all<double>(8),

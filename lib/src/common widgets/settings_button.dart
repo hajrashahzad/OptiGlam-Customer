@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constants/constants.dart';
 class SettingsButton extends StatelessWidget {
-  SettingsButton({
+  const SettingsButton({
     super.key,
     required this.fieldValue,
     required this.leading,

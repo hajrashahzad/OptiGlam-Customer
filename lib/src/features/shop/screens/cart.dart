@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../constants/constants.dart';
 import 'checkout_details.dart';
-import 'package:get/get.dart';
 
 class Cart extends StatelessWidget {
   const Cart({super.key});
@@ -13,7 +12,7 @@ class Cart extends StatelessWidget {
       child: Container(
         color: kBabyPink,
         child: Container(
-          margin: EdgeInsets.all(10),
+          margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(15),
           decoration: const BoxDecoration(
             color: kWhite,
@@ -59,7 +58,7 @@ class Cart extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  SingleChildScrollView(
+                  const SingleChildScrollView(
                     child: Column(
                       children: [
                         CartWidget(productName: 'Product Name', productPrice: 'Price in PKR', quantity: '1',),
@@ -71,15 +70,15 @@ class Cart extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Subtotal', style: kRegularBlackH3,),
                       Text('5889', style: kRegularBlackH3,)
                     ],
                   ),
-                  Divider(color: kGrey,),
-                  Text('Shipping and Taxes calculated at checkout.', style: kSmallGrey,),
+                  const Divider(color: kGrey,),
+                  const Text('Shipping and Taxes calculated at checkout.', style: kSmallGrey,),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: SizedBox(
@@ -108,7 +107,7 @@ class Cart extends StatelessWidget {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutDetails()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const CheckoutDetails()));
                         },
                         style: ButtonStyle(
                           elevation: MaterialStateProperty.all<double>(8),
@@ -158,7 +157,7 @@ class CartWidget extends StatelessWidget {
             Container(
               width: 100,
               height: 100,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: kGrey, //TODO: insert product thumbnail here
                 borderRadius: BorderRadius.horizontal(
                   left: Radius.circular(20),
@@ -168,7 +167,7 @@ class CartWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Expanded(
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.48,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -184,24 +183,24 @@ class CartWidget extends StatelessWidget {
                             productPrice,
                             style: kSmallBlack14,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 7,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               TextButton(
-                                style: TextButton.styleFrom(padding: EdgeInsets.all(0), tapTargetSize: MaterialTapTargetSize.shrinkWrap, alignment: Alignment.centerLeft,minimumSize: Size(21, 30),),
+                                style: TextButton.styleFrom(padding: const EdgeInsets.all(0), tapTargetSize: MaterialTapTargetSize.shrinkWrap, alignment: Alignment.centerLeft,minimumSize: const Size(21, 30),),
                                 onPressed: () {},
                                 child: Container(
                                   height: 21,
                                   width: 29,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: kBarbiePink,
                                     borderRadius: BorderRadius.horizontal(left: Radius.circular(5),),
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(bottom: 1.0),
+                                  child: const Padding(
+                                    padding: EdgeInsets.only(bottom: 1.0),
                                     child: Icon(Icons.minimize, color: kWhite,),
                                   ),
                                 ),
@@ -213,23 +212,23 @@ class CartWidget extends StatelessWidget {
                                 child: Center(child: Text(quantity, style: kSmallBlack14,)),
                               ),
                               TextButton(
-                                style: TextButton.styleFrom(padding: EdgeInsets.all(0), tapTargetSize: MaterialTapTargetSize.shrinkWrap, alignment: Alignment.centerLeft,minimumSize: Size(21, 30),),
+                                style: TextButton.styleFrom(padding: const EdgeInsets.all(0), tapTargetSize: MaterialTapTargetSize.shrinkWrap, alignment: Alignment.centerLeft,minimumSize: const Size(21, 30),),
                                 onPressed: () {},
                                 child: Container(
                                   height: 21,
                                   width: 29,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: kBarbiePink,
                                     borderRadius: BorderRadius.horizontal(right: Radius.circular(5),),
                                   ),
-                                  child: Center(child: Icon(Icons.add, color: kWhite,),),
+                                  child: const Center(child: Icon(Icons.add, color: kWhite,),),
                                 ),
                               ),
                             ],
                           ),
                         ],
                       ),
-                      TextButton(onPressed: (){}, child: Icon(Icons.close, color: kBlack,), style: TextButton.styleFrom(padding: EdgeInsets.all(0), tapTargetSize: MaterialTapTargetSize.shrinkWrap, alignment: Alignment.centerLeft,minimumSize: Size(15, 15),),),
+                      TextButton(onPressed: (){}, style: TextButton.styleFrom(padding: const EdgeInsets.all(0), tapTargetSize: MaterialTapTargetSize.shrinkWrap, alignment: Alignment.centerLeft,minimumSize: const Size(15, 15),), child: const Icon(Icons.close, color: kBlack,),),
                     ],
                   ),
                 ),

@@ -10,20 +10,20 @@ class CheckoutBill extends StatelessWidget {
         child: Container(
           color: kBabyPink,
           child: Container(
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: kWhite,
               borderRadius: BorderRadius.circular(40),
             ),
-            child: SingleChildScrollView(
+            child: const SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 20,),
-                    const Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                    SizedBox(height: 20,),
+                    Padding(
+                      padding: EdgeInsets.only(left: 10),
                       child: Text(
                         'Your total bill',
                         style: TextStyle(
@@ -35,7 +35,7 @@ class CheckoutBill extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20,),
+                    SizedBox(height: 20,),
                     Divider(color: kBarbiePink,),
                     SizedBox(height: 30,),
                     BillEntry(productName: 'Product Name', price: '2000 PKR',),
@@ -65,7 +65,7 @@ class BillEntry extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -74,7 +74,7 @@ class BillEntry extends StatelessWidget {
             ],
           ),
         ),
-        Divider(color: kGrey,),
+        const Divider(color: kGrey,),
       ],
     );
   }

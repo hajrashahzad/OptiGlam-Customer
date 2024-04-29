@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/constants/constants.dart';
 import '../../../common widgets/custom_app_bar.dart';
-import '../controllers/home_controller.dart';
-import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
 
@@ -15,21 +12,21 @@ class Dashboard extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              CustomAppBar(),
+              const CustomAppBar(),
               Padding(
                 padding: const EdgeInsets.fromLTRB(15, 0, 15, 20),
                 child: SearchBar(
                   hintText: 'Search...',
                   hintStyle: MaterialStateProperty.all<TextStyle>(
-                    TextStyle(
+                    const TextStyle(
                       color: kGrey,
                       fontFamily: 'Poppins',
                     ),
                   ),
                   backgroundColor:
                   MaterialStateProperty.all<Color>(kBackgroundGrey),
-                  leading: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                  leading: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 7.0),
                     child: Icon(
                       Icons.search_outlined,
                       color: kGrey,
@@ -308,6 +305,10 @@ class Dashboard extends StatelessWidget {
                       child: Row(
                         children: [
                           TextButton(
+                            onPressed: () {},
+                            style: TextButton.styleFrom(
+                                padding: const EdgeInsets.fromLTRB(10, 5, 0, 0)
+                            ),
                             child: Container(
                               height: 160,
                               width: 120,
@@ -315,13 +316,13 @@ class Dashboard extends StatelessWidget {
                                   color: kBackgroundGrey,
                                   borderRadius: BorderRadius.circular(25)
                               ),
-                            ),
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
                             ),
                           ),
                           TextButton(
+                            onPressed: () {},
+                            style: TextButton.styleFrom(
+                                padding: const EdgeInsets.fromLTRB(10, 5, 0, 0)
+                            ),
                             child: Container(
                               height: 160,
                               width: 120,
@@ -329,13 +330,13 @@ class Dashboard extends StatelessWidget {
                                   color: kBackgroundGrey,
                                   borderRadius: BorderRadius.circular(25)
                               ),
-                            ),
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
                             ),
                           ),
                           TextButton(
+                            onPressed: () {},
+                            style: TextButton.styleFrom(
+                                padding: const EdgeInsets.fromLTRB(10, 5, 0, 0)
+                            ),
                             child: Container(
                               height: 160,
                               width: 120,
@@ -343,13 +344,13 @@ class Dashboard extends StatelessWidget {
                                   color: kBackgroundGrey,
                                   borderRadius: BorderRadius.circular(25)
                               ),
-                            ),
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
                             ),
                           ),
                           TextButton(
+                            onPressed: () {},
+                            style: TextButton.styleFrom(
+                                padding: const EdgeInsets.fromLTRB(10, 5, 0, 0)
+                            ),
                             child: Container(
                               height: 160,
                               width: 120,
@@ -357,10 +358,6 @@ class Dashboard extends StatelessWidget {
                                   color: kBackgroundGrey,
                                   borderRadius: BorderRadius.circular(25)
                               ),
-                            ),
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
                             ),
                           ),
 

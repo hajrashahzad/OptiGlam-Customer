@@ -86,7 +86,7 @@ class RegisterScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
                                   ),
-                                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.all(10),),
+                                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(10),),
                                 ),
                                 child: const Text(
                                   'Register',
@@ -99,7 +99,7 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                     const Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: EdgeInsets.only(left: 10),
                       child: Text(
                         'Create an\naccount!',
                         style: TextStyle(
@@ -111,7 +111,7 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                     const Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: EdgeInsets.only(left: 10),
                       child: Text(
                         'Happy to see you join!',
                         style: TextStyle(
@@ -227,7 +227,7 @@ class RegisterScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height:25,
                           ),
                           Padding(
@@ -261,8 +261,8 @@ class RegisterScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 10),
                             child: Text('OR', style: TextStyle(
                               color: kGrey,
                             ),),

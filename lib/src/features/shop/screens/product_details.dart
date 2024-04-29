@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/features/shop/screens/cart.dart';
 import '../../../constants/constants.dart';
-import 'cart.dart';
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key, required this.productId});
   final String productId; //Get product information using the product id
@@ -12,10 +11,10 @@ class ProductDetails extends StatelessWidget {
         color: kWhite,
         child: Stack(
           children: [
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.3,
-              child: Image(
+              child: const Image(
                 image: AssetImage('assets/images/foundation-sample.jpg'),
                 fit: BoxFit.fill,
               ),
@@ -24,7 +23,7 @@ class ProductDetails extends StatelessWidget {
               top: MediaQuery.of(context).size.height * 0.27,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(30),
                   ),
@@ -36,33 +35,33 @@ class ProductDetails extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      const Text(
                         'Product Name',
                         style: kBoldBlackH1,
                       ),
-                      Text(
+                      const Text(
                         'Brand Name',
                         style: kRegularBlackH2,
                       ),
-                      Text(
+                      const Text(
                         '3499 PKR',
                         style: kRegularGreyH2,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      const Text(
                         'Description - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
                         softWrap: true,
                         style: kSmallBlack,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      SingleChildScrollView(
+                      const SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
@@ -116,7 +115,7 @@ class ProductDetails extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
-                      Text(
+                      const Text(
                         'Product Reviews',
                         style: kRegularBlackH3,
                       ),
@@ -127,7 +126,7 @@ class ProductDetails extends StatelessWidget {
                         color: kBackgroundGrey,
                         child: TextButton(
                           onPressed: () {},
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
@@ -199,7 +198,7 @@ class ProductDetails extends StatelessWidget {
                           height: 50,
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Cart()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const Cart()));
                             },
                             style: ButtonStyle(
                               elevation: MaterialStateProperty.all<double>(8),
@@ -245,7 +244,7 @@ class ShadeCircle extends StatelessWidget {
             width: 38,
             decoration: BoxDecoration(
               color: shadeColor, //TODO: Get list of all foundation hexcodes from the database
-              borderRadius: BorderRadius.all(Radius.circular(50)),
+              borderRadius: const BorderRadius.all(Radius.circular(50)),
               border: Border.all(
                 color: kBabyPink,
                 width: 2.0,
@@ -257,7 +256,7 @@ class ShadeCircle extends StatelessWidget {
           ),
           Text(
             shadeName,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'Poppins',
               fontSize: 10,
               fontWeight: FontWeight.w100,

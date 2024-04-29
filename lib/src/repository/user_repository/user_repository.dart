@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:optiglamcustomer/src/features/authentication/models/user_model.dart';
-import 'package:optiglamcustomer/src/repository/authentication_repository/authentication_repository.dart';
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();

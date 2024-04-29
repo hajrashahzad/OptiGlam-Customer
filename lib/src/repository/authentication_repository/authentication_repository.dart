@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:optiglamcustomer/src/features/authentication/screens/login_screen.dart';
@@ -32,7 +31,7 @@ class AuthenticationRepository extends GetxController{
       print('Firebase Auth Error: ${ex.message}');
       throw ex;
     } catch(_) {
-      final ex = AuthenticationFailure();
+      const ex = AuthenticationFailure();
       print('Firebase Auth Error: ${ex.message}');
       throw ex;
     }
@@ -47,7 +46,7 @@ class AuthenticationRepository extends GetxController{
       print('Firebase Auth Error: ${ex.message}');
       throw ex;
     } catch(_) {
-      final ex = AuthenticationFailure();
+      const ex = AuthenticationFailure();
       print('Firebase Auth Error: ${ex.message}');
       throw ex;
     }

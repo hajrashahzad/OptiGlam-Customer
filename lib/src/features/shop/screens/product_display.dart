@@ -16,21 +16,21 @@ class ProductDisplay extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                CustomAppBar(),
+                const CustomAppBar(),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(15, 0, 15, 20),
                   child: SearchBar(
                     hintText: 'Search...',
                     hintStyle: MaterialStateProperty.all<TextStyle>(
-                      TextStyle(
+                      const TextStyle(
                         color: kGrey,
                         fontFamily: 'Poppins',
                       ),
                     ),
                     backgroundColor:
                     MaterialStateProperty.all<Color>(kBackgroundGrey),
-                    leading: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                    leading: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 7.0),
                       child: Icon(
                         Icons.search_outlined,
                         color: kGrey,
