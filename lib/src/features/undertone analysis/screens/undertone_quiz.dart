@@ -14,19 +14,19 @@ class QuizScreen extends StatelessWidget {
         color: kWhite,
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Text(
+            const Text(
               'Undertone Analysis',
               style: kBoldBarbiePinkH1,
             ),
-            Text(
+            const Text(
               'Just a few small, simple tests that help\nyou figure out your undertone.',
               style: kSmall14Grey,
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             Expanded(
@@ -36,7 +36,7 @@ class QuizScreen extends StatelessWidget {
                 itemBuilder: (context, index) => QuizQuestionCard(index: index),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: SizedBox(
@@ -103,7 +103,7 @@ class QuizQuestionCard extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   quizController.questionList[index].question!,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontFamily: 'Poppins',
                     color: kBlack,

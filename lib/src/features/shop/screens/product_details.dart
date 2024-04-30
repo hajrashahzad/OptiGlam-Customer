@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:optiglamcustomer/src/features/shop/controllers/cart_controller.dart';
 import 'package:optiglamcustomer/src/features/shop/screens/cart.dart';
 import '../../../constants/constants.dart';
-import 'cart.dart';
+import '../controllers/product_details_controller.dart';
+
+///Product ID is being set when in the ProductDetailsController
+///get Product details on the basis of the ID in the controller
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key, required this.productId});
-  final String productId; //Get product information using the product id
+  ProductDetails({super.key});
+  final ProductDetailsController detailsController =
+      Get.put(ProductDetailsController());
+  final CartController cartController = Get.put(CartController());
+  List<Widget> shadeList = [];
   @override
   Widget build(BuildContext context) {
+    for (var i = 0; i < detailsController.product.shadeNames.length; i++) {
+      shadeList.add(
+        ShadeCircle(
+          shadeName: detailsController.product.shadeNames[i],
+          shadeColor: Color(detailsController.product.hexCodes[i]),
+          shadeInt: detailsController.product.hexCodes[i],
+        ),
+      );
+    }
     return SafeArea(
       child: Container(
         color: kWhite,
@@ -16,7 +33,7 @@ class ProductDetails extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.3,
               child: Image(
-                image: AssetImage('assets/images/foundation-sample.jpg'),
+                image: AssetImage(detailsController.product.imgURL!),
                 fit: BoxFit.fill,
               ),
             ),
@@ -24,7 +41,7 @@ class ProductDetails extends StatelessWidget {
               top: MediaQuery.of(context).size.height * 0.27,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(30),
                   ),
@@ -33,188 +50,127 @@ class ProductDetails extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 28.0, vertical: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        'Product Name',
-                        style: kBoldBlackH1,
-                      ),
-                      Text(
-                        'Brand Name',
-                        style: kRegularBlackH2,
-                      ),
-                      Text(
-                        '3499 PKR',
-                        style: kRegularGreyH2,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Description - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
-                        softWrap: true,
-                        style: kSmallBlack,
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            ShadeCircle(
-                              shadeName: 'sand dunes',
-                              shadeColor: kBackgroundGrey,
-                            ), //TODO: write function to convert array of shade objects into ShadeCircle objects
-                            ShadeCircle(
-                              shadeName: 'sand dunes',
-                              shadeColor: kBackgroundGrey,
-                            ),
-                            ShadeCircle(
-                              shadeName: 'sand dunes',
-                              shadeColor: kBackgroundGrey,
-                            ),
-                            ShadeCircle(
-                              shadeName: 'sand dunes',
-                              shadeColor: kBackgroundGrey,
-                            ),
-                            ShadeCircle(
-                              shadeName: 'sand dunes',
-                              shadeColor: kBackgroundGrey,
-                            ),
-                            ShadeCircle(
-                              shadeName: 'sand dunes',
-                              shadeColor: kBackgroundGrey,
-                            ),
-                            ShadeCircle(
-                              shadeName: 'sand dunes',
-                              shadeColor: kBackgroundGrey,
-                            ),
-                            ShadeCircle(
-                              shadeName: 'sand dunes',
-                              shadeColor: kBackgroundGrey,
-                            ),
-                            ShadeCircle(
-                              shadeName: 'sand dunes',
-                              shadeColor: kBackgroundGrey,
-                            ),
-                            ShadeCircle(
-                              shadeName: 'sand dunes',
-                              shadeColor: kBackgroundGrey,
-                            ),
-                            ShadeCircle(
-                              shadeName: 'sand dunes',
-                              shadeColor: kBackgroundGrey,
-                            ),
-                          ],
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          height: 20,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        'Product Reviews',
-                        style: kRegularBlackH3,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        color: kBackgroundGrey,
-                        child: TextButton(
-                          onPressed: () {},
+                        Text(
+                          detailsController.product.productName,
+                          style: kBoldBlackH1,
+                        ),
+                        Text(
+                          detailsController.product.brandName,
+                          style: kRegularBlackH2,
+                        ),
+                        Text(
+                          '${detailsController.product.productPrice} PKR',
+                          style: kRegularGreyH2,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          detailsController.product.productDescription,
+                          softWrap: true,
+                          style: kSmallBlack,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    foregroundImage: AssetImage(
-                                        'assets/images/user_profile.png'),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Username',
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w200,
-                                          color: kBlack,
-                                          fontSize: 11,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Review smod e et dol....',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            fontWeight: FontWeight.w100,
-                                            color: kBlack,
-                                            fontSize: 11),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                              Icon(Icons.chevron_right, color: kBarbiePink,),
-                            ],
+                            children: shadeList,
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: SizedBox(
-                          width:  MediaQuery.of(context).size.width * 0.9,
-                          height: 50,
-                          child: ElevatedButton(
-                            onPressed: () {
-                            },
-                            style: ButtonStyle(
-                              elevation: MaterialStateProperty.all<double>(8),
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ),
-                              ),
-                              backgroundColor: MaterialStateProperty.all<Color>(kBabyPink),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const Text(
+                          'Selected Shade: ',
+                          style: kSmall14Black,
+                        ),
+                        Obx(
+                          () => Container(
+                            height: 50,
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            decoration: BoxDecoration(
+                              color: Color(detailsController.selectedShade.value),
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            child: const Text("Try it On", style: kSmall,),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: SizedBox(
-                          width:  MediaQuery.of(context).size.width * 0.9,
-                          height: 50,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Cart()));
-                            },
-                            style: ButtonStyle(
-                              elevation: MaterialStateProperty.all<double>(8),
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ),
+                            child: Center(
+                              child: Text(
+                                detailsController.selectedShadeName.value,
+                                style: kSmall,
                               ),
-                              backgroundColor: MaterialStateProperty.all<Color>(kBarbiePink),
                             ),
-                            child: const Text("Add to Cart", style: kSmall,),
                           ),
                         ),
-                      ),
-                    ],
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            height: 50,
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                elevation: MaterialStateProperty.all<double>(8),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ),
+                                ),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(kBabyPink),
+                              ),
+                              child: const Text(
+                                "Try it On",
+                                style: kSmall,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            height: 50,
+                            child: Obx(() =>  ElevatedButton(
+                              onPressed: detailsController.selectedShadeName.value == 'None' ? null : () {
+                                cartController.addToCart(detailsController.product, detailsController.selectedShadeName.value, detailsController.selectedShade.value);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Cart()));
+                              },
+                              style: ButtonStyle(
+                                elevation: MaterialStateProperty.all<double>(8),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ),
+                                ),
+                                backgroundColor:
+                                MaterialStateProperty.all<Color>(kBarbiePink),
+                              ),
+                              child: const Text(
+                                "Add to Cart",
+                                style: kSmall,
+                              ),
+                            ),),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -227,45 +183,53 @@ class ProductDetails extends StatelessWidget {
 }
 
 class ShadeCircle extends StatelessWidget {
-  const ShadeCircle({
+  ShadeCircle({
     super.key,
     required this.shadeName,
     required this.shadeColor,
+    required this.shadeInt,
   });
   final String shadeName;
   final Color shadeColor;
+  final int shadeInt;
+  final ProductDetailsController detailsController = Get.put(ProductDetailsController());
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
-      child: Column(
-        children: [
-          Container(
-            height: 38,
-            width: 38,
-            decoration: BoxDecoration(
-              color: shadeColor, //TODO: Get list of all foundation hexcodes from the database
-              borderRadius: BorderRadius.all(Radius.circular(50)),
-              border: Border.all(
-                color: kBabyPink,
-                width: 2.0,
+    return TextButton(
+      onPressed: () {
+        detailsController.updateSelectedShade(shadeInt, shadeName);
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+        child: Column(
+          children: [
+            Container(
+              height: 38,
+              width: 38,
+              decoration: BoxDecoration(
+                color: shadeColor,
+                borderRadius: const BorderRadius.all(Radius.circular(50)),
+                border: Border.all(
+                  color: kBabyPink,
+                  width: 2.0,
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 1.5,
-          ),
-          Text(
-            shadeName,
-            style: TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 10,
-              fontWeight: FontWeight.w100,
-              color: kGrey,
-              inherit: false,
+            const SizedBox(
+              height: 1.5,
             ),
-          )
-        ],
+            Text(
+              shadeName,
+              style: const TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 10,
+                fontWeight: FontWeight.w100,
+                color: kGrey,
+                inherit: false,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
