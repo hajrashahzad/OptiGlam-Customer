@@ -319,7 +319,7 @@ class Dashboard extends StatelessWidget {
                           TextButton(
                             onPressed: () {},
                             style: TextButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
+                                padding: const EdgeInsets.fromLTRB(10, 5, 0, 0)
                             ),
                             child: Container(
                               height: 160,
@@ -333,7 +333,7 @@ class Dashboard extends StatelessWidget {
                           TextButton(
                             onPressed: () {},
                             style: TextButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
+                                padding: const EdgeInsets.fromLTRB(10, 5, 0, 0)
                             ),
                             child: Container(
                               height: 160,
@@ -347,7 +347,7 @@ class Dashboard extends StatelessWidget {
                           TextButton(
                             onPressed: () {},
                             style: TextButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
+                                padding: const EdgeInsets.fromLTRB(10, 5, 0, 0)
                             ),
                             child: Container(
                               height: 160,
@@ -361,7 +361,7 @@ class Dashboard extends StatelessWidget {
                           TextButton(
                             onPressed: () {},
                             style: TextButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
+                                padding: const EdgeInsets.fromLTRB(10, 5, 0, 0)
                             ),
                             child: Container(
                               height: 160,

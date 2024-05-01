@@ -14,9 +14,9 @@ class ArPreview extends StatelessWidget {
           TextButton(onPressed: (){
             _controller.destroy();
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => FilterScreen()));
-          }, child: Text('back')),
+          }, child: const Text('back')),
           FutureBuilder(
-            future: _controller?.initialize(
+            future: _controller.initialize(
               androidLicenseKey:
               "c1a07e8bd7cde35173f9b3332ca1a73ce84741cc3da33cc9fb31b3e248c2ea06ce0c83718bbc7504",
               iosLicenseKey:
@@ -32,7 +32,7 @@ class ArPreview extends StatelessWidget {
                     slot: 'filters', path: filePath);
                 return DeepArPreview(_controller);
               }
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             },
           ),
         ],

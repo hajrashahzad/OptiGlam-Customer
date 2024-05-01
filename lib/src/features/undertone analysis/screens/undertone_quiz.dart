@@ -45,7 +45,7 @@ class QuizScreen extends StatelessWidget {
                 child: Obx(() =>  ElevatedButton(
                   onPressed: quizController.formFilled.value? (){
                     quizController.calculateUndertone();
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => QuizResult()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const QuizResult()));
                   } : null,
                   style: quizController.formFilled.value? ButtonStyle(
                     elevation: MaterialStateProperty.all<double>(5),

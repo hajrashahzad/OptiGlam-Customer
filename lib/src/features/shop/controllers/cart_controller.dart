@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:optiglamcustomer/src/features/shop/models/product_model.dart';
 import '../models/cart_element_model.dart';
 class CartController extends GetxController{

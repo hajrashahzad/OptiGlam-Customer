@@ -33,7 +33,7 @@ class ProductDetails extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.3,
               child: Image(
-                image: AssetImage(detailsController.product.imgURL!),
+                image: AssetImage(detailsController.product.imgURL),
                 fit: BoxFit.fill,
               ),
             ),

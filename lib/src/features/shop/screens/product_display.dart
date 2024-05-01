@@ -5,7 +5,6 @@ import '../../../constants/constants.dart';
 import '../../../common widgets/custom_app_bar.dart';
 import 'product_details.dart';
 import '../controllers/product_display_controller.dart';
-import '../controllers/product_details_controller.dart';
 import '../models/product_model.dart';
 
 class ProductDisplay extends StatelessWidget {
@@ -18,7 +17,7 @@ class ProductDisplay extends StatelessWidget {
         color: kWhite,
         child: Column(
           children: [
-            CustomAppBar(),
+            const CustomAppBar(),
             Padding(
               padding: const EdgeInsets.fromLTRB(15, 0, 15, 20),
               child: SearchBar(

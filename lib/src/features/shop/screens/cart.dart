@@ -113,7 +113,7 @@ class Cart extends StatelessWidget {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Shop()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const Shop()));
                       },
                       style: ButtonStyle(
                         elevation: MaterialStateProperty.all<double>(8),
@@ -143,7 +143,7 @@ class Cart extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CheckoutDetails()));
+                                builder: (context) => const CheckoutDetails()));
                       },
                       style: ButtonStyle(
                         elevation: MaterialStateProperty.all<double>(8),

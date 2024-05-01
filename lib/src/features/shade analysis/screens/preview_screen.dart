@@ -17,19 +17,19 @@ class PreviewScreen extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
-              Text(
+              const Text(
                 'Preview',
                 style: kBoldBarbiePinkH1,
               ),
-              Text(
+              const Text(
                 'Make sure you have selected\nat least 3 images!',
                 style: kSmall14Grey,
                 textAlign: TextAlign.center,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Expanded(
@@ -48,7 +48,7 @@ class PreviewScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Column(
@@ -56,7 +56,7 @@ class PreviewScreen extends StatelessWidget {
                   Container(
                     width: 56,
                     height: 56,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: kBackgroundGrey,
                       shape: BoxShape.circle,
                     ),
@@ -64,14 +64,14 @@ class PreviewScreen extends StatelessWidget {
                       onPressed: () {
                         imagePickerController.appendToImageList();
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.add,
                         color: kBarbiePink,
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(2.0),
+                  const Padding(
+                    padding: EdgeInsets.all(2.0),
                     child: Text(
                       'Add Image',
                       style: TextStyle(
@@ -84,7 +84,7 @@ class PreviewScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Obx(
@@ -173,13 +173,13 @@ class ImageDisplayCard extends StatelessWidget {
               ],
             ),
             child: Padding(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   TextButton(
                     onPressed: onPressed,
-                    child: Icon(
+                    child: const Icon(
                       Icons.cancel_outlined,
                       color: kBarbiePink,
                     ),
@@ -187,8 +187,8 @@ class ImageDisplayCard extends StatelessWidget {
                   Image(
                     image: FileImage(img),
                   ),
-                  SizedBox(height: 5,),
-                  Text('Please select the lighting Conditions of this image:', style: kSmall14Grey,),
+                  const SizedBox(height: 5,),
+                  const Text('Please select the lighting Conditions of this image:', style: kSmall14Grey,),
                   Card(
                     child: Column(
                       children: [
@@ -201,7 +201,7 @@ class ImageDisplayCard extends StatelessWidget {
                                 imagePickerController.updateLightingConditionAtIndex(value!, index);
                               },
                             ),),
-                            Text(
+                            const Text(
                               'good',
                               style: kNormalBlack,
                             ),
@@ -216,7 +216,7 @@ class ImageDisplayCard extends StatelessWidget {
                                 imagePickerController.updateLightingConditionAtIndex(value!, index);
                               },
                             ),),
-                            Text(
+                            const Text(
                               'poor',
                               style: kNormalBlack,
                             ),

@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../constants/constants.dart';
 import '../controllers/filter_controller.dart';
-import 'package:get/get.dart';
 import 'ar_preview.dart';
 
 class FilterScreen extends StatelessWidget {
@@ -14,9 +12,9 @@ class FilterScreen extends StatelessWidget {
     return SafeArea(
         child: Container(
           color: kWhite,
-          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-          child: SingleChildScrollView(
-            child: const Column(
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+          child: const SingleChildScrollView(
+            child: Column(
               children: [
                 Text('Avaialable Filters', style: kBoldBarbiePinkH1,),
                 SizedBox(height: 20,),
@@ -76,27 +74,27 @@ class FilterShadeCard extends StatelessWidget {
           height: 75,
           child: Row(
             children: [
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               Container(
                 height:50,
                 width: 50,
                 decoration: BoxDecoration(
                   color: foundationColor,
-                  borderRadius: BorderRadius.all(Radius.circular(50),),
+                  borderRadius: const BorderRadius.all(Radius.circular(50),),
                   border: Border.all(
                     color: kBabyPink,
                     width: 3,
                   ),
                 ),
               ),
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0,15,0,0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(productName, style: TextStyle(color: kBlack, fontSize: 14, fontFamily: 'Poppins'),),
-                    Text(shadeName, style: TextStyle(color: kBarbiePink, fontSize: 14, fontFamily: 'Poppins'),),
+                    Text(productName, style: const TextStyle(color: kBlack, fontSize: 14, fontFamily: 'Poppins'),),
+                    Text(shadeName, style: const TextStyle(color: kBarbiePink, fontSize: 14, fontFamily: 'Poppins'),),
                   ],
                 ),
               ),
