@@ -5,15 +5,15 @@ import 'package:optiglamcustomer/src/features/shade%20analysis/screens/skintone_
 import 'package:optiglamcustomer/src/features/try%20on/screens/filter_screen.dart';
 import 'package:optiglamcustomer/src/features/undertone%20analysis/screens/undertone_quiz.dart';
 import '../../../common widgets/custom_app_bar.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
         color: kWhite,
+        padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -279,8 +279,8 @@ class Dashboard extends StatelessWidget {
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             fit: BoxFit.fitWidth,
                             child: Image(
-                              width: 130,
-                              height: 150,
+                              width: 115,
+                              height: 140,
                               image: AssetImage(
                                 'assets/images/girl_makeup_dashboard_4.png',
                               ),
@@ -292,92 +292,189 @@ class Dashboard extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width *0.9,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Expert Advice',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.bold,
-                        color: kBlack,
-                        fontSize: 24,
+              SizedBox(height: 10,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width *0.9,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Expert Advice',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.bold,
+                          color: kBlack,
+                          fontSize: 24,
+                        ),
                       ),
-                    ),
-                    const Text('Our team has curated the best content out there to help you understand yourself better, and empower your beauty journey. ',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        color: kGrey,
-                        fontSize: 14,
+                      const Text('Our team has curated the best content out there to help you understand yourself better, and empower your beauty journey. ',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          color: kGrey,
+                          fontSize: 14,
+                        ),
                       ),
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
-                            ),
-                            child: Container(
-                              height: 160,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                  color: kBackgroundGrey,
-                                  borderRadius: BorderRadius.circular(25)
+                      SizedBox(height: 10,),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                launchUrl(Uri.parse('https://www.goodhousekeeping.com/beauty/makeup/a41392557/undertone-guide/'));
+                              },
+                              style: TextButton.styleFrom(
+                                  padding: const EdgeInsets.fromLTRB(10, 5, 0, 0)
+                              ),
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    height: 160,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                        color: kBackgroundGrey,
+                                        borderRadius: BorderRadius.circular(25),
+                                        image: DecorationImage(image: AssetImage('assets/images/woman.png'), fit: BoxFit.cover,)
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 160,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xA1000000),
+                                      borderRadius: BorderRadius.circular(25),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+                                      child: Column(
+                                        children: [
+                                          Text('Ultimate Guide to Skin Undertones: Cool, Warm and More', style: TextStyle(fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w200, decoration: TextDecoration.none, color: kWhite,),),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
-                            ),
-                            child: Container(
-                              height: 160,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                  color: kBackgroundGrey,
-                                  borderRadius: BorderRadius.circular(25)
+                            TextButton(
+                              onPressed: () {
+                                launchUrl(Uri.parse('https://www.oprah.com/style/how-to-choose-and-use-the-right-foundation/all'));
+                              },
+                              style: TextButton.styleFrom(
+                                  padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
+                              ),
+                              child:Stack(
+                                children: [
+                                  Container(
+                                    height: 160,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                        color: kBackgroundGrey,
+                                        borderRadius: BorderRadius.circular(25),
+                                        image: DecorationImage(image: AssetImage('assets/images/girl blonde.png'), fit: BoxFit.cover,)
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 160,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xA1000000),
+                                      borderRadius: BorderRadius.circular(25),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+                                      child: Column(
+                                        children: [
+                                          Text('Problems with Foundation: The Puzzle Solved', style: TextStyle(fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w200, decoration: TextDecoration.none,color: kWhite,),),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
-                            ),
-                            child: Container(
-                              height: 160,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                  color: kBackgroundGrey,
-                                  borderRadius: BorderRadius.circular(25)
+                            TextButton(
+                              onPressed: () {
+                                launchUrl(Uri.parse('https://www.lavenderhillclothing.com/blogs/lavenderhilllife/unlocking-the-power-of-color-dressing-for-your-skin-tone#:~:text=For%20warm%2Dtoned%20skin%2C%20go,to%20experiment%20with%20different%20palettes.'));
+                              },
+                              style: TextButton.styleFrom(
+                                  padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
+                              ),
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    height: 160,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                        color: kBackgroundGrey,
+                                        borderRadius: BorderRadius.circular(25),
+                                        image: DecorationImage(image: AssetImage('assets/images/products.png'), fit: BoxFit.cover,)
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 160,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xA1000000),
+                                      borderRadius: BorderRadius.circular(25),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+                                      child: Column(
+                                        children: [
+                                          Text('Unlocking the Power of Colour: Dressing for Your Skin Tone', style: TextStyle(fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w200, decoration: TextDecoration.none, color: kWhite,),),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
-                            ),
-                            child: Container(
-                              height: 160,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                  color: kBackgroundGrey,
-                                  borderRadius: BorderRadius.circular(25)
+                            TextButton(
+                              onPressed: () {
+                                launchUrl(Uri.parse('https://www.crystalclearskin.com.au/blogs/blog/why-skincare-important-for-makeup#:~:text=A%20well%2Dmaintained%20skincare%20routine,or%20settle%20into%20fine%20lines.'));
+                              },
+                              style: TextButton.styleFrom(
+                                  padding: EdgeInsets.fromLTRB(10, 5, 0, 0)
+                              ),
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    height: 160,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                        color: kBackgroundGrey,
+                                        borderRadius: BorderRadius.circular(25),
+                                        image: DecorationImage(image: AssetImage('assets/images/foundation-sample.jpg'), fit: BoxFit.cover,)
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 160,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xA1000000),
+                                      borderRadius: BorderRadius.circular(25),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+                                      child: Column(
+                                        children: [
+                                          Text('Why Is Skincare Important For Makeup?', style: TextStyle(fontFamily: 'Poppins', fontSize: 12, fontWeight: FontWeight.w200, decoration: TextDecoration.none, color: kWhite,),),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 30,),
-                  ],
+                      const SizedBox(height: 30,),
+                    ],
+                  ),
                 ),
               ),
             ],

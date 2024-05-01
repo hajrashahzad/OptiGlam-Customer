@@ -11,6 +11,7 @@ class Shop extends StatelessWidget {
         child: Container(
           color: kWhite,
           height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.all(12),
           child: SingleChildScrollView(
             child: Column(
               children: [

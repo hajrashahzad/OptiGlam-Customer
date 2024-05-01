@@ -54,12 +54,14 @@ class CustomAppBar extends StatelessWidget {
                       }
                     }
                   ),
-                  Text(
+                  const Text(
                     'Good Morning',
                     style: TextStyle(
                       color: kBlack,
                       fontSize: 14,
                       fontFamily: 'Poppins',
+                      decoration: TextDecoration.none,
+                      fontWeight: FontWeight.w100,
                     ),
                   )
                 ],

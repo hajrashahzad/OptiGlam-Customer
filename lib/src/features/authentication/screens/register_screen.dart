@@ -22,6 +22,7 @@ class RegisterScreen extends StatelessWidget {
             child: Form(
               key: _formKey,
               child: Container(
+                padding: const EdgeInsets.all(15),
                 decoration: const BoxDecoration(
                   color: kWhite,
                   borderRadius: BorderRadius.all(Radius.circular(40)),
@@ -29,6 +30,7 @@ class RegisterScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(height: 50,),
                     Container(
                       decoration: const BoxDecoration(
                         color: kBarbiePink,
@@ -39,67 +41,64 @@ class RegisterScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            child: Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LoginScreen()));
-                                },
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(kBarbiePink),
-                                  foregroundColor:
-                                      MaterialStateProperty.all<Color>(kWhite),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                  ),
-                                  padding:
-                                    MaterialStateProperty.all<EdgeInsetsGeometry>(
-                                      const EdgeInsets.all(10),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LoginScreen()));
+                              },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(kBarbiePink),
+                                foregroundColor:
+                                    MaterialStateProperty.all<Color>(kWhite),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
-                                child: const Text(
-                                  'Login',
-                                  style: kNormal,
+                                padding:
+                                  MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                    const EdgeInsets.all(10),
                                 ),
+                              ),
+                              child: const Text(
+                                'Login',
+                                style: kNormal,
                               ),
                             ),
                           ),
-                          Container(
-                            child: Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(kWhite),
-                                  foregroundColor:
-                                      MaterialStateProperty.all<Color>(kBarbiePink),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(kWhite),
+                                foregroundColor:
+                                    MaterialStateProperty.all<Color>(kBarbiePink),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
                                   ),
-                                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.all(10),),
                                 ),
-                                child: const Text(
-                                  'Register',
-                                  style: kNormal,
-                                ),
+                                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.all(10),),
+                              ),
+                              child: const Text(
+                                'Register',
+                                style: kNormal,
                               ),
                             ),
                           ),
                         ],
                       ),
                     ),
+                    const SizedBox(height: 15,),
                     const Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: EdgeInsets.only(left: 10),
                       child: Text(
                         'Create an\naccount!',
                         style: TextStyle(
@@ -111,7 +110,7 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                     const Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: EdgeInsets.only(left: 10),
                       child: Text(
                         'Happy to see you join!',
                         style: TextStyle(
@@ -129,6 +128,7 @@ class RegisterScreen extends StatelessWidget {
                             padding: const EdgeInsets.fromLTRB(8,8,8,0),
                             child: TextFormField(
                               controller: controller.fullName,
+                              style: const TextStyle(fontSize: 12, color: kBlack, fontFamily: 'Poppins',),
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.person_outlined, color: kGrey, size: 16,),
                                   hintText: 'Full Name',
@@ -146,6 +146,7 @@ class RegisterScreen extends StatelessWidget {
                             padding: const EdgeInsets.fromLTRB(8,8,8,0),
                             child: TextFormField(
                               controller: controller.email,
+                              style: const TextStyle(fontSize: 12, color: kBlack, fontFamily: 'Poppins',),
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.email_outlined, color: kGrey, size: 16,),
                                   hintText: 'Email',
@@ -163,6 +164,7 @@ class RegisterScreen extends StatelessWidget {
                             padding: const EdgeInsets.fromLTRB(8,8,8,0),
                             child: TextFormField(
                               controller: controller.phoneNumber,
+                              style: const TextStyle(fontSize: 12, color: kBlack, fontFamily: 'Poppins',),
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.phone_outlined, color: kGrey, size: 16,),
                                   hintText: 'Phone Number',
@@ -180,6 +182,7 @@ class RegisterScreen extends StatelessWidget {
                             padding: const EdgeInsets.fromLTRB(8,8,8,0),
                             child: TextFormField(
                               controller: controller.location,
+                              style: const TextStyle(fontSize: 12, color: kBlack, fontFamily: 'Poppins',),
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.pin_drop_outlined, color: kGrey, size: 16,),
                                   hintText: 'Location',
@@ -197,6 +200,8 @@ class RegisterScreen extends StatelessWidget {
                             padding: const EdgeInsets.fromLTRB(8,8,8,0),
                             child: TextFormField(
                               controller: controller.password,
+                              style: const TextStyle(fontSize: 12, color: kBlack, fontFamily: 'Poppins',),
+                              obscureText: true,
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.lock_outline, color: kGrey, size: 16,),
                                   hintText: 'Password',
@@ -214,6 +219,8 @@ class RegisterScreen extends StatelessWidget {
                             padding: const EdgeInsets.fromLTRB(8,8,8,0),
                             child: TextFormField(
                               controller: controller.cnfrmPassword,
+                              style: const TextStyle(fontSize: 12, color: kBlack, fontFamily: 'Poppins',),
+                              obscureText: true,
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.lock_open, color: kGrey, size: 16,),
                                   hintText: 'Confirm Password',
@@ -231,7 +238,7 @@ class RegisterScreen extends StatelessWidget {
                             height:25,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
+                            padding: const EdgeInsets.fromLTRB(4,0,0, 10),
                             child: SizedBox(
                               width:  MediaQuery.of(context).size.width * 0.9,
                               height: 50,
@@ -261,8 +268,8 @@ class RegisterScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 10),
                             child: Text('OR', style: TextStyle(
                               color: kGrey,
                             ),),
@@ -272,7 +279,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 30),
+                      padding: const EdgeInsets.fromLTRB(8,0,0, 30),
                       child: SizedBox(
                         width:  MediaQuery.of(context).size.width * 0.9,
                         height: 50,

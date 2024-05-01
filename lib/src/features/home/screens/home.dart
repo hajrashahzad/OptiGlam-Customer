@@ -12,25 +12,39 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
         () => Scaffold(
-        bottomNavigationBar: NavigationBar(
-          onDestinationSelected: (int index){
-            homeController.updatePageIndex(index);
-          },
-          indicatorColor: kBarbiePink,
-          selectedIndex: homeController.currentPageIndex.value,
-          destinations: const [
-            NavigationDestination(icon: Icon(Icons.home), label: 'Home', selectedIcon: Icon(Icons.home_outlined),),
-            NavigationDestination(
-              icon: Icon(Icons.shop),
-              selectedIcon: Icon(Icons.shop_outlined),
-              label: 'Shop',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.person),
-              selectedIcon: Icon(Icons.person_outlined),
-              label: 'Profile',
-            ),
-          ],
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                offset: Offset.fromDirection(4),
+                blurRadius: 5,
+                blurStyle: BlurStyle.outer,
+              )
+            ]
+          ),
+          child: NavigationBar(
+            onDestinationSelected: (int index){
+              homeController.updatePageIndex(index);
+            },
+            backgroundColor: kWhite,
+            indicatorColor: kWhite,
+            elevation: 0,
+            selectedIndex: homeController.currentPageIndex.value,
+            destinations: const [
+              NavigationDestination(icon: Icon(Icons.home_outlined,  color: kBlack,), label: 'Home', selectedIcon: Icon(Icons.home),),
+              NavigationDestination(
+                icon: Icon(Icons.shop_outlined, color: kBlack,),
+                selectedIcon: Icon(Icons.shop),
+                label: 'Shop',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.person_outlined,  color: kBlack,),
+                selectedIcon: Icon(Icons.person),
+                label: 'Profile',
+              ),
+            ],
+          ),
         ),
         body: <Widget>[
           Dashboard(),

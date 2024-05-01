@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   final _formKey = GlobalKey<FormState>();
-  
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(LoginScreenController());
@@ -31,58 +30,52 @@ class LoginScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Container(
-                      child: Image(
-                        image: AssetImage('assets/images/login.png'),
-                      ),
+                    const Image(
+                      image: AssetImage('assets/images/login.png'),
                     ),
                     Container(
                       decoration: const BoxDecoration(
                         color: kBarbiePink,
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                      margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            child: Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                child: Text('Login', style: kNormal,),
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(kWhite),
-                                  foregroundColor:
-                                      MaterialStateProperty.all<Color>(kBarbiePink),
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(kWhite),
+                                foregroundColor:
+                                    MaterialStateProperty.all<Color>(kBarbiePink),
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
                                   ),
-                                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.all(10),),
                                 ),
+                                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(10),),
                               ),
+                              child: const Text('Login', style: kNormal,),
                             ),
                           ),
-                          Container(
-                            child: Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
-                                },
-                                child: Text('Register', style: kNormal,),
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(kBarbiePink),
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
+                              },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(kBarbiePink),
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
                               ),
+                              child: const Text('Register', style: kNormal,),
                             ),
                           ),
                         ],
@@ -96,6 +89,7 @@ class LoginScreen extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(8,8,8,0),
                               child: TextFormField(
                                 controller: controller.email,
+                                style: const TextStyle(fontSize: 12, color: kBlack, fontFamily: 'Poppins',),
                                 decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.email_outlined, color: kGrey, size: 16,),
                                   hintText: 'Email',
@@ -113,6 +107,8 @@ class LoginScreen extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(8,8,8,0),
                               child: TextFormField(
                                 controller: controller.password,
+                                style: const TextStyle(fontSize: 12, color: kBlack, fontFamily: 'Poppins',),
+                                obscureText: true,
                                 decoration: InputDecoration(
                                     prefixIcon: const Icon(Icons.lock_outline, color: kGrey, size: 16,),
                                     hintText: 'Password',
@@ -128,13 +124,13 @@ class LoginScreen extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 1.0),
-                              child: TextButton(onPressed: (){}, child: Text('Forgot Password', style: TextStyle(fontFamily: 'Poppins'),),),
+                              child: TextButton(onPressed: (){}, child: const Text('Forgot Password', style: TextStyle(fontFamily: 'Poppins'),),),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height:25,
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(bottom: 10),
+                              padding: const EdgeInsets.fromLTRB(8,0,0,10),
                               child: SizedBox(
                                 width:  MediaQuery.of(context).size.width * 0.9,
                                 height: 50,
@@ -161,14 +157,14 @@ class LoginScreen extends StatelessWidget {
                           ],
                         ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 10),
                       child: Text('OR', style: TextStyle(
                         color: kGrey,
                       ),),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 30),
+                      padding: const EdgeInsets.only(bottom: 40),
                       child: SizedBox(
                         width:  MediaQuery.of(context).size.width * 0.9,
                         height: 50,

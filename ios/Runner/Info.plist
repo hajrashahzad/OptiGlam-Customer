@@ -7,6 +7,10 @@
 <key>NSCameraUsageDescription</key>
 <string>OptiGlam would like to access camera!</string>
 <key>NSMicrophoneUsageDescription</key>
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>https</string>
+</array>
 <string>OptiGlam would like to access microphone!</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
