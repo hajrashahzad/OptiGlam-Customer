@@ -71,7 +71,7 @@ class CustomAppBar extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Cart()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Cart()));
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(kBackgroundGrey),

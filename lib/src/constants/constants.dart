@@ -44,6 +44,7 @@ const kSmall12Grey = TextStyle(
   color: kGrey,
   fontWeight: FontWeight.w200,
   inherit: false,
+
 );
 const kSmall = TextStyle(
   fontSize: 12,
@@ -147,6 +148,13 @@ const kBoldBlackH5 = TextStyle(
   fontWeight: FontWeight.bold,
   fontFamily: 'Poppins',
   color: kGrey,
+  inherit: false,
+);
+const kRegularBarbiePinkH5 = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'Poppins',
+  color: kBarbiePink,
   inherit: false,
 );
 const kSmallBlack14 = TextStyle(

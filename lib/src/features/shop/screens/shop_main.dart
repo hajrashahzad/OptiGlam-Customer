@@ -51,7 +51,7 @@ class Shop extends StatelessWidget {
                       children: [
                         TextButton(
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductDisplay()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDisplay()));
                           },
                           child: SizedBox(
                             width: MediaQuery.of(context).size.width *0.85,
