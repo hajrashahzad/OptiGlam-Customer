@@ -10,7 +10,7 @@ class CartController extends GetxController{
   int tempIndex = 0;
   bool isAlreadyInCart(ProductModel prod){
     for(var i =0; i < cartList.length; i++){
-      if (prod.productId == cartList.value[i].product.productId){
+      if (prod.id == cartList.value[i].product.id){
         tempIndex = i;
         return true;
       }

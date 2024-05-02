@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:optiglamcustomer/src/features/shop/controllers/cart_controller.dart';
+import 'package:optiglamcustomer/src/features/shop/models/product_model.dart';
 import 'package:optiglamcustomer/src/features/shop/screens/cart.dart';
+import 'package:optiglamcustomer/src/features/try%20on/screens/filter_screen.dart';
 import '../../../constants/constants.dart';
 import '../controllers/product_details_controller.dart';
 
 ///Product ID is being set when in the ProductDetailsController
 ///get Product details on the basis of the ID in the controller
 class ProductDetails extends StatelessWidget {
-  ProductDetails({super.key});
-  final ProductDetailsController detailsController =
-      Get.put(ProductDetailsController());
+  ProductDetails({super.key, required this.product});
+  ProductModel product;
+  final ProductDetailsController detailsController = Get.put(ProductDetailsController());
   final CartController cartController = Get.put(CartController());
   List<Widget> shadeList = [];
   @override
   Widget build(BuildContext context) {
-    for (var i = 0; i < detailsController.product.shadeNames.length; i++) {
+    for (var i = 0; i < product.shadeNames.length; i++) {
       shadeList.add(
         ShadeCircle(
-          shadeName: detailsController.product.shadeNames[i],
-          shadeColor: Color(detailsController.product.hexCodes[i]),
-          shadeInt: detailsController.product.hexCodes[i],
+          shadeName: product.shadeNames[i],
+          shadeColor: Color(product.hexCodes[i]),
+          shadeInt: product.hexCodes[i],
         ),
       );
     }
@@ -33,7 +35,7 @@ class ProductDetails extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.3,
               child: Image(
-                image: AssetImage(detailsController.product.imgURL),
+                image: AssetImage(product.imgURL),
                 fit: BoxFit.fill,
               ),
             ),
@@ -59,22 +61,22 @@ class ProductDetails extends StatelessWidget {
                           height: 20,
                         ),
                         Text(
-                          detailsController.product.productName,
+                          product.productName,
                           style: kBoldBlackH1,
                         ),
                         Text(
-                          detailsController.product.brandName,
+                          product.brandName,
                           style: kRegularBlackH2,
                         ),
                         Text(
-                          '${detailsController.product.productPrice} PKR',
+                          '${product.productPrice.toString()} PKR',
                           style: kRegularGreyH2,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          detailsController.product.productDescription,
+                          product.productDescription,
                           softWrap: true,
                           style: kSmallBlack,
                         ),
@@ -119,7 +121,9 @@ class ProductDetails extends StatelessWidget {
                             width: MediaQuery.of(context).size.width * 0.9,
                             height: 50,
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => FilterScreen()));
+                              },
                               style: ButtonStyle(
                                 elevation: MaterialStateProperty.all<double>(8),
                                 shape: MaterialStateProperty.all<
@@ -145,7 +149,7 @@ class ProductDetails extends StatelessWidget {
                             height: 50,
                             child: Obx(() =>  ElevatedButton(
                               onPressed: detailsController.selectedShadeName.value == 'None' ? null : () {
-                                cartController.addToCart(detailsController.product, detailsController.selectedShadeName.value, detailsController.selectedShade.value);
+                                cartController.addToCart(product, detailsController.selectedShadeName.value, detailsController.selectedShade.value);
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(

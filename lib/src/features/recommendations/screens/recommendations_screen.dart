@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:optiglamcustomer/src/features/shop/models/product_model.dart';
 import 'package:optiglamcustomer/src/features/shop/screens/product_details.dart';
 import '../../../constants/constants.dart';
 import '../controllers/recommendation_controller.dart';
@@ -56,17 +57,17 @@ class RecommendationCard extends StatelessWidget {
     required this.index,
   });
   int index;
-  RecommendationController recommendationController =
-      Get.find<RecommendationController>();
-  ProductDetailsController productDetailsController = Get.put(ProductDetailsController());
   @override
   Widget build(BuildContext context) {
+    RecommendationController recommendationController = Get.find<RecommendationController>();
+    ProductDetailsController productDetailsController = Get.put(ProductDetailsController());
+    ProductModel product = recommendationController.productList[index];
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextButton(
         onPressed: () {
           productDetailsController.setProduct(recommendationController.productList[index]);
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails(product: product)));
         },
         child: Container(
           decoration: BoxDecoration(

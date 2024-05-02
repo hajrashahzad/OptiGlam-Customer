@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:optiglamcustomer/src/features/shade%20analysis/screens/skintone_analysis_welcome.dart';
 import '../../../constants/constants.dart';
 import '../../../common widgets/profile_information_container.dart';
 import '../../../common widgets/settings_button.dart';
@@ -72,29 +73,24 @@ class ProfilePage extends StatelessWidget {
                     color: kBackgroundGrey,
                     borderRadius: BorderRadius.all(Radius.circular(25)),
                   ),
-                  child: const Column(
+                  child: const Column(                  
                     children: [
                       ProfileInformationContainer(
-                        fieldTitle: 'Name',
-                        value: 'Hajra Shahzad',
+                        fieldTitle: 'Name',                                  
                         icon: Icons.person,
                       ), //Information from db
                       ProfileInformationContainer(
-                        fieldTitle: 'Email Address',
-                        value: 'hajrashahzad24@gmail.com',
+                        fieldTitle: 'Email Address',                                  
                         icon: Icons.email,
                       ), //TODO: fix text overflow here
                       ProfileInformationContainer(
                           fieldTitle: 'Phone Number',
-                          value: '03XX-XXXXXXXX',
                           icon: Icons.phone),
                       ProfileInformationContainer(
                           fieldTitle: 'MST Skin Tone Value',
-                          value: '3',
                           icon: Icons.face),
                       ProfileInformationContainer(
                           fieldTitle: 'Undertone',
-                          value: 'Warm',
                           icon: Icons.color_lens),
                     ],
                   ),
@@ -117,10 +113,6 @@ class ProfilePage extends StatelessWidget {
                   ),
                   child: const Column(
                     children: [
-                      SettingsButton(
-                        fieldValue: 'Change Username',
-                        leading: Icons.person_outlined,
-                      ),
                       SettingsButton(
                         fieldValue: 'Change Password',
                         leading: Icons.lock_outline,

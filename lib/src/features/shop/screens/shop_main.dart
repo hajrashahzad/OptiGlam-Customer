@@ -51,7 +51,7 @@ class Shop extends StatelessWidget {
                       children: [
                         TextButton(
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDisplay()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDisplay(category: 'Face')));
                           },
                           child: SizedBox(
                             width: MediaQuery.of(context).size.width *0.85,
@@ -68,7 +68,9 @@ class Shop extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDisplay(category: 'Eyes')));
+                          },
                           child: SizedBox(
                             width: MediaQuery.of(context).size.width *0.85,
                             height: 100,
@@ -84,7 +86,9 @@ class Shop extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDisplay(category: 'Lips')));
+                          },
                           child: SizedBox(
                             width: MediaQuery.of(context).size.width *0.85,
                             height: 100,
@@ -100,7 +104,9 @@ class Shop extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDisplay(category: 'Other')));
+                          },
                           child: SizedBox(
                             width: MediaQuery.of(context).size.width *0.85,
                             height: 100,

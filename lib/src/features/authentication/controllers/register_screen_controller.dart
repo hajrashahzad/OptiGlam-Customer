@@ -15,11 +15,15 @@ class RegisterScreenController extends GetxController{
   final phoneNumber = TextEditingController();
   final location = TextEditingController();
   final password = TextEditingController();
-  final cnfrmPassword = TextEditingController();
 
   void registerUser(UserModel user, String password) {
-    _userRepo.createUser(user);
+    fullName.clear();
+    email.clear();
+    phoneNumber.clear();
+    location.clear();
+    this.password.clear();
     _authRepo.createUserWithEmailAndPassword(user.email, password);
+    _userRepo.createUser(user);
   }
 
 }

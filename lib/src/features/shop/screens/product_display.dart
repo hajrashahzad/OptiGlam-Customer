@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:optiglamcustomer/src/features/shop/controllers/product_details_controller.dart';
 import '../../../constants/constants.dart';
 import '../../../common widgets/custom_app_bar.dart';
 import 'product_details.dart';
@@ -8,8 +7,9 @@ import '../controllers/product_display_controller.dart';
 import '../models/product_model.dart';
 
 class ProductDisplay extends StatelessWidget {
-  ProductDisplay({super.key});
-  final DisplayController displayController = Get.put(DisplayController());
+  ProductDisplay({super.key, required this.category});
+  String category;
+  DisplayController displayController = Get.put(DisplayController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,12 +44,28 @@ class ProductDisplay extends StatelessWidget {
               height: 20,
             ),
             Expanded(
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: displayController.productList.length,
-                itemBuilder: (context, index) => ProductDisplayButton(
-                  product: displayController.productList[index],
-                ),
+              child: FutureBuilder(
+                future: displayController.getProductsData(category),
+                builder: (context, snapshot) {
+                  // if (snapshot.connectionState == ConnectionState.done) {
+                  //   if (snapshot.hasData) {
+                      List<ProductModel> productsData = snapshot.data as List<ProductModel>;
+                      return ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: productsData.length,
+                        itemBuilder: (context, index) => ProductDisplayButton(
+                          product: productsData[index],
+                        ),
+                      );
+                  //   }
+                  //   else {
+                  //     return const CircularProgressIndicator();
+                  //   }
+                  // }
+                  // else {
+                  //   return const CircularProgressIndicator();
+                  // }
+                }
               ),
             ),
           ],
@@ -65,13 +81,11 @@ class ProductDisplayButton extends StatelessWidget {
     required this.product,
   });
   final ProductModel product;
-  final ProductDetailsController productDetailsController = Get.put(ProductDetailsController());
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        productDetailsController.setProduct(product);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails(product: product)));
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,
@@ -103,13 +117,13 @@ class ProductDisplayButton extends StatelessWidget {
                     style: kNormalBlack,
                   ),
                   Text(
-                    '${product.productPrice} PKR',
+                    '${product.productPrice.toString()} PKR',
                     style: kSmall14Grey,
                   ),
-                  Text(
-                    product.productShade,
-                    style: kSmall14Grey,
-                  ),
+                  // Text(
+                  //   product.productShade,
+                  //   style: kSmall14Grey,
+                  // ),
                 ],
               ),
             ),

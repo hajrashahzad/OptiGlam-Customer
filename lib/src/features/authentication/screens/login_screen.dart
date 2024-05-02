@@ -19,6 +19,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          height: MediaQuery.of(context).size.height,
           color: kBabyPink,
           padding: const EdgeInsets.all(10),
           child: Form(
@@ -96,6 +97,7 @@ class LoginScreen extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(8,8,8,0),
                               child: TextFormField(
                                 controller: controller.email,
+                                style: kSmallBlack,
                                 decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.email_outlined, color: kGrey, size: 16,),
                                   hintText: 'Email',
@@ -113,6 +115,8 @@ class LoginScreen extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(8,8,8,0),
                               child: TextFormField(
                                 controller: controller.password,
+                                style: kSmallBlack,
+                                obscureText: true,
                                 decoration: InputDecoration(
                                     prefixIcon: const Icon(Icons.lock_outline, color: kGrey, size: 16,),
                                     hintText: 'Password',
@@ -133,69 +137,36 @@ class LoginScreen extends StatelessWidget {
                             const SizedBox(
                               height:25,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 10),
-                              child: SizedBox(
-                                width:  MediaQuery.of(context).size.width * 0.9,
-                                height: 50,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
-                                      LoginScreenController.instance.signInUser(controller.email.text.trim(), controller.password.text.trim());
-                                    }
-                                    // Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
-                                  },
-                                  style: ButtonStyle(
-                                    elevation: MaterialStateProperty.all<double>(8),
-                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30.0),
+                            Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: SizedBox(
+                                  width:  MediaQuery.of(context).size.width * 0.9,
+                                  height: 50,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      if (_formKey.currentState!.validate()) {
+                                        _formKey.currentState!.reset();
+                                        LoginScreenController.instance.signInUser(controller.email.text.trim(), controller.password.text.trim());
+                                      }
+                                    },
+                                    style: ButtonStyle(
+                                      elevation: MaterialStateProperty.all<double>(8),
+                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(30.0),
+                                        ),
                                       ),
+                                      backgroundColor: MaterialStateProperty.all<Color>(kBlack),
                                     ),
-                                    backgroundColor: MaterialStateProperty.all<Color>(kBlack),
+                                    child: const Text("Sign in"),
                                   ),
-                                  child: const Text("Sign in"),
                                 ),
                               ),
-                            ),
+                            )
                           ],
                         ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 10),
-                      child: Text('OR', style: TextStyle(
-                        color: kGrey,
-                      ),),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 30),
-                      child: SizedBox(
-                        width:  MediaQuery.of(context).size.width * 0.9,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
-                          },
-                          style: ButtonStyle(
-                            elevation: MaterialStateProperty.all<double>(8),
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30.0),
-                              ),
-                            ),
-                            backgroundColor: MaterialStateProperty.all<Color>(kBackgroundGrey),
-                            foregroundColor: MaterialStateProperty.all<Color>(kGrey),
-                          ),
-                          child: const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.add_to_drive),
-                              Text("   Sign up with Google"),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                    ),                    
                   ],
                 ),
               ),

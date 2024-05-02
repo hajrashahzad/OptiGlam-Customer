@@ -61,7 +61,7 @@ const kSmallBlack = TextStyle(
   fontSize: 12,
   fontFamily: 'Poppins',
   color: kBlack,
-  inherit: false,
+  inherit: true,
 );
 const kNormalBold = TextStyle(
   fontSize: 16,

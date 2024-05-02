@@ -11,6 +11,8 @@ class LoginScreenController extends GetxController{
   final password = TextEditingController();
 
   void signInUser(String email, String password) {
+    this.email.clear();
+    this.password.clear();
     _authRepo.loginUserWithEmailAndPassword(email, password);
   }
 

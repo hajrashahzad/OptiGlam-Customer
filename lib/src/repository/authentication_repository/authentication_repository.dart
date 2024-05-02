@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/features/authentication/screens/login_screen.dart';
 import 'package:optiglamcustomer/src/features/home/screens/home.dart';
 import 'package:optiglamcustomer/src/features/welcome/screens/landing_page.dart';
@@ -29,10 +30,18 @@ class AuthenticationRepository extends GetxController{
     } on FirebaseAuthException catch(e) {
       final ex = AuthenticationFailure.code(e.code);
       print('Firebase Auth Error: ${ex.message}');
+      Get.snackbar('Error', ex.message,
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.redAccent.withOpacity(0.1),
+      colorText: Colors.red);
       throw ex;
     } catch(_) {
       const ex = AuthenticationFailure();
       print('Firebase Auth Error: ${ex.message}');
+      Get.snackbar('Error', ex.message,
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.redAccent.withOpacity(0.1),
+      colorText: Colors.red);
       throw ex;
     }
     
@@ -44,10 +53,18 @@ class AuthenticationRepository extends GetxController{
     } on FirebaseAuthException catch(e) {
       final ex = AuthenticationFailure.code(e.code);
       print('Firebase Auth Error: ${ex.message}');
+      Get.snackbar('Error', ex.message,
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.redAccent.withOpacity(0.1),
+      colorText: Colors.red);
       throw ex;
     } catch(_) {
       const ex = AuthenticationFailure();
       print('Firebase Auth Error: ${ex.message}');
+      Get.snackbar('Error', ex.message,
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.redAccent.withOpacity(0.1),
+      colorText: Colors.red);
       throw ex;
     }
     
