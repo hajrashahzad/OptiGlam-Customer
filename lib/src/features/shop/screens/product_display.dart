@@ -44,29 +44,36 @@ class ProductDisplay extends StatelessWidget {
               height: 20,
             ),
             Expanded(
-              child: FutureBuilder(
-                future: displayController.getProductsData(category),
-                builder: (context, snapshot) {
-                  // if (snapshot.connectionState == ConnectionState.done) {
-                  //   if (snapshot.hasData) {
-                      List<ProductModel> productsData = snapshot.data as List<ProductModel>;
-                      return ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: productsData.length,
-                        itemBuilder: (context, index) => ProductDisplayButton(
-                          product: productsData[index],
-                        ),
-                      );
-                  //   }
-                  //   else {
-                  //     return const CircularProgressIndicator();
-                  //   }
-                  // }
-                  // else {
-                  //   return const CircularProgressIndicator();
-                  // }
-                }
-              ),
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: displayController.productList.length,
+                itemBuilder: (context, index) => ProductDisplayButton(
+                  product: displayController.productList[index],
+                ),
+              )
+              // child: FutureBuilder(
+              //   future: displayController.getProductsData(category),
+              //   builder: (context, snapshot) {
+              //     // if (snapshot.connectionState == ConnectionState.done) {
+              //     //   if (snapshot.hasData) {
+                      // List<ProductModel> productsData = snapshot.data as List<ProductModel>;
+                      // return ListView.builder(
+                      //   scrollDirection: Axis.vertical,
+                      //   itemCount: productsData.length,
+                      //   itemBuilder: (context, index) => ProductDisplayButton(
+                      //     product: productsData[index],
+                      //   ),
+                      // );
+              //     //   }
+              //     //   else {
+              //     //     return const CircularProgressIndicator();
+              //     //   }
+              //     // }
+              //     // else {
+              //     //   return const CircularProgressIndicator();
+              //     // }
+              //   }
+              // ),
             ),
           ],
         ),

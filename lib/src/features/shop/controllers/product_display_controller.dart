@@ -7,8 +7,11 @@ class DisplayController extends GetxController{
 
   final _productRepo = Get.put(ProductRepository());
 
+  List<ProductModel> productList = [];
+
   Future<List<ProductModel>> getProductsData(String category) async {
     List<ProductModel> products = await _productRepo.getAllProducts(category);
+    productList = products;
     return products;
   }
 }
