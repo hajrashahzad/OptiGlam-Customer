@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   final _formKey = GlobalKey<FormState>();
-  
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(LoginScreenController());
@@ -32,10 +31,8 @@ class LoginScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Container(
-                      child: const Image(
-                        image: AssetImage('assets/images/login.png'),
-                      ),
+                    const Image(
+                      image: AssetImage('assets/images/login.png'),
                     ),
                     Container(
                       decoration: const BoxDecoration(
@@ -47,43 +44,40 @@ class LoginScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            child: Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(kWhite),
-                                  foregroundColor:
-                                      MaterialStateProperty.all<Color>(kBarbiePink),
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(kWhite),
+                                foregroundColor:
+                                    MaterialStateProperty.all<Color>(kBarbiePink),
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
                                   ),
-                                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(10),),
                                 ),
-                                child: const Text('Login', style: kNormal,),
+                                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(10),),
                               ),
+                              child: const Text('Login', style: kNormal,),
                             ),
                           ),
-                          Container(
-                            child: Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
-                                },
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(kBarbiePink),
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
+                              },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(kBarbiePink),
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
-                                child: const Text('Register', style: kNormal,),
+                          
                               ),
+                              child: const Text('Register', style: kNormal,),
                             ),
                           ),
                         ],
@@ -97,7 +91,7 @@ class LoginScreen extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(8,8,8,0),
                               child: TextFormField(
                                 controller: controller.email,
-                                style: kSmallBlack,
+                                style: const TextStyle(fontSize: 12, color: kBlack, fontFamily: 'Poppins',),
                                 decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.email_outlined, color: kGrey, size: 16,),
                                   hintText: 'Email',
@@ -115,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(8,8,8,0),
                               child: TextFormField(
                                 controller: controller.password,
-                                style: kSmallBlack,
+                                style: const TextStyle(fontSize: 12, color: kBlack, fontFamily: 'Poppins',),
                                 obscureText: true,
                                 decoration: InputDecoration(
                                     prefixIcon: const Icon(Icons.lock_outline, color: kGrey, size: 16,),
@@ -137,36 +131,71 @@ class LoginScreen extends StatelessWidget {
                             const SizedBox(
                               height:25,
                             ),
-                            Center(
-                              child: Padding(
-                                padding: const EdgeInsets.only(bottom: 10),
-                                child: SizedBox(
-                                  width:  MediaQuery.of(context).size.width * 0.9,
-                                  height: 50,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      if (_formKey.currentState!.validate()) {
-                                        _formKey.currentState!.reset();
-                                        LoginScreenController.instance.signInUser(controller.email.text.trim(), controller.password.text.trim());
-                                      }
-                                    },
-                                    style: ButtonStyle(
-                                      elevation: MaterialStateProperty.all<double>(8),
-                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(30.0),
-                                        ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(8,0,0,10),
+                              child: SizedBox(
+                                width:  MediaQuery.of(context).size.width * 0.9,
+                                height: 50,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      LoginScreenController.instance.signInUser(controller.email.text.trim(), controller.password.text.trim());
+                                    }
+                                    // Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                                  },
+                                  style: ButtonStyle(
+                                    elevation: MaterialStateProperty.all<double>(8),
+                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30.0),
                                       ),
-                                      backgroundColor: MaterialStateProperty.all<Color>(kBlack),
+                                      
                                     ),
-                                    child: const Text("Sign in"),
+                                    backgroundColor: MaterialStateProperty.all<Color>(kBlack),
                                   ),
+                                    child: const Text("Sign in"),
+
                                 ),
                               ),
                             )
                           ],
                         ),
-                    ),                    
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 10),
+                      child: Text('OR', style: TextStyle(
+                        color: kGrey,
+                      ),),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 40),
+                      child: SizedBox(
+                        width:  MediaQuery.of(context).size.width * 0.9,
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                          },
+                          style: ButtonStyle(
+                            elevation: MaterialStateProperty.all<double>(8),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                            ),
+                            backgroundColor: MaterialStateProperty.all<Color>(kBackgroundGrey),
+                            foregroundColor: MaterialStateProperty.all<Color>(kGrey),
+                          ),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.add_to_drive),
+                              Text("   Sign up with Google"),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
