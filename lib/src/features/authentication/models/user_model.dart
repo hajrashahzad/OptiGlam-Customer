@@ -6,6 +6,8 @@ class UserModel {
   final String email;
   final String phone;
   final String location;
+  final String mstSkintone;
+  final String undertone;
 
   const UserModel({
     this.id,
@@ -13,6 +15,8 @@ class UserModel {
     required this.fullName,
     required this.phone,
     required this.location,
+    required this.mstSkintone,
+    required this.undertone
   });
 
   toJson() {
@@ -21,6 +25,8 @@ class UserModel {
       "email": email,
       "phone": phone,
       "location": location,
+      "mstSkintone": mstSkintone,
+      "undertone": undertone,
     };
   }
 
@@ -31,7 +37,9 @@ class UserModel {
       email: data?['email'],
       phone: data?['phone'],
       location: data?['location'],
-      fullName: data?['fullName']
+      fullName: data?['fullName'],
+      mstSkintone: data?['mstSkintone'],
+      undertone: data?['undertone']
     );
   }
 }

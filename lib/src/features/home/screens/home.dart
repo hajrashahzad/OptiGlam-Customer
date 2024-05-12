@@ -47,9 +47,9 @@ class Home extends StatelessWidget {
           ),
         ),
         body: <Widget>[
-          Dashboard(),
+          const Dashboard(),
           Shop(),
-          ProfilePage(),
+          const ProfilePage(),
         ][homeController.currentPageIndex.value],
       ),
     );

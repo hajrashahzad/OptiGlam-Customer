@@ -18,6 +18,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          height: MediaQuery.of(context).size.height,
           color: kBabyPink,
           padding: const EdgeInsets.all(10),
           child: Form(
@@ -74,6 +75,7 @@ class LoginScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
+                          
                               ),
                               child: const Text('Register', style: kNormal,),
                             ),
@@ -147,13 +149,15 @@ class LoginScreen extends StatelessWidget {
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30.0),
                                       ),
+                                      
                                     ),
                                     backgroundColor: MaterialStateProperty.all<Color>(kBlack),
                                   ),
-                                  child: const Text("Sign in"),
+                                    child: const Text("Sign in"),
+
                                 ),
                               ),
-                            ),
+                            )
                           ],
                         ),
                     ),

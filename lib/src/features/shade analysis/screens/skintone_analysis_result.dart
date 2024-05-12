@@ -4,7 +4,8 @@ import 'package:optiglamcustomer/src/features/recommendations/screens/recommenda
 import '../../../constants/constants.dart';
 
 class SkinToneAnalysisResult extends StatelessWidget {
-  SkinToneAnalysisResult({super.key});
+  SkinToneAnalysisResult({super.key, required this.mst});
+  final mst;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -47,7 +48,7 @@ class SkinToneAnalysisResult extends StatelessWidget {
                         borderRadius: BorderRadius.circular(200),
                       ),
                       child: Center(
-                        child: Text('3', style: TextStyle(fontFamily: 'Poppins', color: kBarbiePink, fontWeight: FontWeight.bold, fontSize: 32, decoration: TextDecoration.none),),
+                        child: Text(mst, style: TextStyle(fontFamily: 'Poppins', color: kBarbiePink, fontWeight: FontWeight.bold, fontSize: 32, decoration: TextDecoration.none),),
                       ),
                     ),
                     SizedBox(height: 30,),

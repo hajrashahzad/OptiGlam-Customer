@@ -143,7 +143,7 @@ class Cart extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CheckoutDetails()));
+                                builder: (context) => const CheckoutDetails()));
                       },
                       style: ButtonStyle(
                         elevation: MaterialStateProperty.all<double>(8),
@@ -191,6 +191,11 @@ class CartWidget extends StatelessWidget {
   final CartController cartController = Get.put(CartController());
   @override
   Widget build(BuildContext context) {
+    final int maxChars = 10;
+    String displayName = productName.length > maxChars
+      ? '${productName.substring(0, maxChars)}...'
+      : productName;
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
@@ -215,7 +220,7 @@ class CartWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Expanded(
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.48,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -224,7 +229,7 @@ class CartWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            productName,
+                            displayName,
                             style: kBoldBlackH5,
                           ),
                           Text(
@@ -258,7 +263,7 @@ class CartWidget extends StatelessWidget {
                                     ),
                                   ),
                                   child: const Padding(
-                                    padding: EdgeInsets.only(bottom: 1.0),
+                                    padding: EdgeInsets.only(bottom: 0),
                                     child: Icon(
                                       Icons.minimize,
                                       color: kWhite,

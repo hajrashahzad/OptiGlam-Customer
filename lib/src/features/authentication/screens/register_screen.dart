@@ -215,25 +215,6 @@ class RegisterScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(8,8,8,0),
-                            child: TextFormField(
-                              controller: controller.cnfrmPassword,
-                              style: const TextStyle(fontSize: 12, color: kBlack, fontFamily: 'Poppins',),
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                  prefixIcon: const Icon(Icons.lock_open, color: kGrey, size: 16,),
-                                  hintText: 'Confirm Password',
-                                  hintStyle: kSmallBlack,
-                                  filled: true,
-                                  fillColor: kBackgroundGrey,
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(30),
-                                  )
-                              ),
-                            ),
-                          ),
                           SizedBox(
                             height:25,
                           ),
@@ -250,6 +231,8 @@ class RegisterScreen extends StatelessWidget {
                                       email: controller.email.text.trim(),
                                       phone: controller.phoneNumber.text.trim(),
                                       location: controller.location.text,
+                                      mstSkintone: '3',
+                                      undertone: 'Warm'
                                     );
                                     RegisterScreenController.instance.registerUser(user, controller.password.text.trim());
                                   }
@@ -275,36 +258,6 @@ class RegisterScreen extends StatelessWidget {
                             ),),
                           ),
                         ],
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8,0,0, 30),
-                      child: SizedBox(
-                        width:  MediaQuery.of(context).size.width * 0.9,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
-                          },
-                          style: ButtonStyle(
-                            elevation: MaterialStateProperty.all<double>(8),
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30.0),
-                              ),
-                            ),
-                            backgroundColor: MaterialStateProperty.all<Color>(kBackgroundGrey),
-                            foregroundColor: MaterialStateProperty.all<Color>(kGrey),
-                          ),
-                          child: const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.add_to_drive),
-                              Text("   Sign up with Google"),
-                            ],
-                          ),
-                        ),
                       ),
                     ),
                   ],

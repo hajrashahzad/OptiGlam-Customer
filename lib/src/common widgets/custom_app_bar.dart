@@ -20,8 +20,8 @@ class CustomAppBar extends StatelessWidget {
         children: [
           Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Image(
                   image: AssetImage('assets/images/user_profile.png'),
                 ),
@@ -37,7 +37,7 @@ class CustomAppBar extends StatelessWidget {
                           UserModel userData = snapshot.data as UserModel;
                           return Text(
                              'Hello, ${userData.fullName}!',
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: kBlack,
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
@@ -46,11 +46,11 @@ class CustomAppBar extends StatelessWidget {
                           );
                         }
                         else {
-                          return CircularProgressIndicator();
+                          return const CircularProgressIndicator();
                         }
                       }
                       else {
-                        return CircularProgressIndicator();
+                        return const CircularProgressIndicator();
                       }
                     }
                   ),
@@ -75,28 +75,28 @@ class CustomAppBar extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => Cart()));
                 },
-                child: Icon(
-                  Icons.shopping_cart_outlined,
-                  color: kBarbiePink,
-                ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(kBackgroundGrey),
-                  shape: MaterialStateProperty.all<CircleBorder>(CircleBorder(),),
-                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.all(10),),
+                  shape: MaterialStateProperty.all<CircleBorder>(const CircleBorder(),),
+                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(10),),
+                ),
+                child: const Icon(
+                  Icons.shopping_cart_outlined,
+                  color: kBarbiePink,
                 ),
               ),
               ElevatedButton(
                 onPressed: () {
                   AuthenticationRepository.instance.logout();
                 },
-                child: Icon(
-                  Icons.logout_outlined,
-                  color: kBarbiePink,
-                ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(kBackgroundGrey),
-                  shape: MaterialStateProperty.all<CircleBorder>(CircleBorder(),),
-                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.all(10),),
+                  shape: MaterialStateProperty.all<CircleBorder>(const CircleBorder(),),
+                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(10),),
+                ),
+                child: const Icon(
+                  Icons.logout_outlined,
+                  color: kBarbiePink,
                 ),
               ),
             ],

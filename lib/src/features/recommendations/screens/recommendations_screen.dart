@@ -1,15 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:optiglamcustomer/src/features/shop/models/product_model.dart';
 import 'package:optiglamcustomer/src/features/shop/screens/product_details.dart';
 import '../../../constants/constants.dart';
 import '../controllers/recommendation_controller.dart';
-import '../../shop/controllers/product_details_controller.dart';
+
 class RecommendationScreen extends StatelessWidget {
-  RecommendationScreen({super.key});
-  final RecommendationController recommendationController =
-      Get.put(RecommendationController());
+  RecommendationScreen({super.key}) {
+    if (Get.isRegistered<RecommendationController>()) {
+      Get.delete<RecommendationController>();
+    }
+    Get.put(RecommendationController());
+  }
+  final RecommendationController recommendationController = Get.put(RecommendationController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,9 +22,7 @@ class RecommendationScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 25,
-            ),
+            const SizedBox(height: 25),
             const Text(
               'Foundation Recommendations',
               style: kBoldBarbiePinkH1,
@@ -34,16 +36,20 @@ class RecommendationScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            const SizedBox(
-              height: 25,
-            ),
+            const SizedBox(height: 25),
             Expanded(
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: recommendationController.productList.length,
-                itemBuilder: (context, index) =>
-                    RecommendationCard(index: index),
-              ),
+              child: Obx(() {
+                if (recommendationController.isLoading.value) {
+                  return const CircularProgressIndicator();
+                } else if (recommendationController.productList.isEmpty) {
+                  return const Text("No products found.");
+                } else {
+                  return ListView.builder(
+                    itemCount: recommendationController.productList.length,
+                    itemBuilder: (context, index) => RecommendationCard(product: recommendationController.productList[index]),
+                  );
+                }
+              }),
             ),
           ],
         ),
@@ -53,22 +59,26 @@ class RecommendationScreen extends StatelessWidget {
 }
 
 class RecommendationCard extends StatelessWidget {
+  final ProductModel product;
+
   RecommendationCard({
     super.key,
-    required this.index,
+    required this.product,
   });
-  int index;
-  RecommendationController recommendationController =
-      Get.find<RecommendationController>();
-  ProductDetailsController productDetailsController = Get.put(ProductDetailsController());
+
   @override
   Widget build(BuildContext context) {
+
+    final int maxChars = 15;
+    String displayName = product.productName.length > maxChars
+      ? '${product.productName.substring(0, maxChars)}...'
+      : product.productName;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextButton(
         onPressed: () {
-          productDetailsController.setProduct(recommendationController.productList[index]);
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails(product: product)));
         },
         child: Container(
           decoration: BoxDecoration(
@@ -94,31 +104,23 @@ class RecommendationCard extends StatelessWidget {
                     color: kBackgroundGrey,
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
-                      image: AssetImage(
-                          recommendationController.productList[index].imgURL),
+                      image: AssetImage(product.imgURL), // Changed from AssetImage to NetworkImage
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      recommendationController.productList[index].productName,
+                      displayName,
                       style: kRegularBarbiePinkH5,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    Text(
-                      'Shade: ${recommendationController.productList[index].productShade}',
-                      style: kSmall14Black,
-                    ),
-                    Text(
-                      '${recommendationController.productList[index].productPrice} PKR',
-                      style: kSmall14Black,
-                    ),
+                    Text('Shade: ${product.productShade}', style: kSmall14Black),
+                    Text('${product.productPrice} PKR', style: kSmall14Black),
                   ],
                 ),
               ],

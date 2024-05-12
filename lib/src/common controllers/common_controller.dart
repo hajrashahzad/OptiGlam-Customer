@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:optiglamcustomer/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:optiglamcustomer/src/repository/user_repository/user_repository.dart';

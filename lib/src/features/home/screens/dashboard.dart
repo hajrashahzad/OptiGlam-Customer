@@ -17,7 +17,7 @@ class Dashboard extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              CustomAppBar(),
+              const CustomAppBar(),
               Padding(
                 padding: const EdgeInsets.fromLTRB(15, 0, 15, 20),
                 child: SearchBar(

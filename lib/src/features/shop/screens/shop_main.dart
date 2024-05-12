@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/features/shop/screens/product_display.dart';
 import '../../../constants/constants.dart';
 import '../../../common widgets/custom_app_bar.dart';
-class Shop extends StatelessWidget {
-  const Shop({super.key});
+import 'package:get/get.dart';
 
+class Shop extends StatelessWidget {
+  Shop({super.key});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -15,21 +16,21 @@ class Shop extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                CustomAppBar(),
+                const CustomAppBar(),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(15, 0, 15, 20),
                   child: SearchBar(
                     hintText: 'Search...',
                     hintStyle: MaterialStateProperty.all<TextStyle>(
-                      TextStyle(
+                      const TextStyle(
                         color: kGrey,
                         fontFamily: 'Poppins',
                       ),
                     ),
                     backgroundColor:
                     MaterialStateProperty.all<Color>(kBackgroundGrey),
-                    leading: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                    leading: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 7.0),
                       child: Icon(
                         Icons.search_outlined,
                         color: kGrey,
@@ -38,7 +39,7 @@ class Shop extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
@@ -52,16 +53,16 @@ class Shop extends StatelessWidget {
                       children: [
                         TextButton(
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDisplay()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDisplay(category: 'Face')));
                           },
-                          child: Container(
+                          child: SizedBox(
                             width: MediaQuery.of(context).size.width *0.85,
                             height: 100,
-                            child: Row(
+                            child: const Row(
                               children: [
                                 Icon(Icons.face, color: kBarbiePink,),
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Text('Face', style: kNormalBarbiePink,),
                                 ),
                               ],
@@ -69,15 +70,17 @@ class Shop extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: (){},
-                          child: Container(
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDisplay(category: 'Eyes')));
+                          },
+                          child: SizedBox(
                             width: MediaQuery.of(context).size.width *0.85,
                             height: 100,
-                            child: Row(
+                            child: const Row(
                               children: [
                                 Icon(Icons.remove_red_eye_outlined, color: kBarbiePink,),
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Text('Eyes', style: kNormalBarbiePink,),
                                 ),
                               ],
@@ -85,15 +88,17 @@ class Shop extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: (){},
-                          child: Container(
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDisplay(category: 'Lips')));
+                          },
+                          child: SizedBox(
                             width: MediaQuery.of(context).size.width *0.85,
                             height: 100,
-                            child: Row(
+                            child: const Row(
                               children: [
                                 Icon(Icons.light, color: kBarbiePink,),
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Text('Lips', style: kNormalBarbiePink,),
                                 ),
                               ],
@@ -101,15 +106,17 @@ class Shop extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: (){},
-                          child: Container(
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDisplay(category: 'Other')));
+                          },
+                          child: SizedBox(
                             width: MediaQuery.of(context).size.width *0.85,
                             height: 100,
-                            child: Row(
+                            child: const Row(
                               children: [
                                 Icon(Icons.mood_sharp, color: kBarbiePink,),
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Text('Other', style: kNormalBarbiePink,),
                                 ),
                               ],
