@@ -9,7 +9,7 @@ class QuizController extends GetxController{
   int warm = 0;
   int cool = 0;
   int neutral = 0;
-  String undertone = 'Warm';
+  RxString undertone = 'Warm'.obs;
   void setQuestions(){
     questionList.add(Question(question: 'What kind of jewellery suits you best?', warmAns: 'Gold', coldAns: 'Silver', neutralAns: 'Both'),);
     questionList.add(Question(question: 'What color brings out your skin tone more?', warmAns: 'White', coldAns: 'Cream', neutralAns: 'Both'),);
@@ -46,13 +46,14 @@ class QuizController extends GetxController{
       }
     }
     if(warm > cool && warm > neutral ){
-      undertone = 'Warm';
+      undertone.value = 'Warm';
     }
     else if (cool > warm && cool > neutral){
-      undertone = 'Cool';
+      undertone.value = 'Cool';
     }
     else if (neutral > warm && neutral > cool){
-      undertone = 'Neutral';
+      undertone.value = 'Neutral';
     }
+    warm = 0; cool = 0; neutral = 0;
   }
 }

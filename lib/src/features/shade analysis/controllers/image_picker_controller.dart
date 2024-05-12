@@ -77,7 +77,7 @@ class ImagePickerController extends GetxController {
     lightingConditionList[index].value = condition;
   }
 
-  Future<void> sendImagesToServer() async {
+  Future<dynamic> sendImagesToServer() async {
     // Step 1: Convert AnalysisImage to File and select up to 3 images
     List<File> selectedImages = await selectImagesFromList(imagesList);
 
@@ -109,6 +109,7 @@ class ImagePickerController extends GetxController {
       Map<String, dynamic> res = jsonDecode(response.body);
       final email = _authRepo.firebaseUser.value?.email;
       _userRepo.updateUserSkintone(email!, res['mst_skintone']);
+      return res['mst_skintone'];
     } else {
       print('Failed to send images. Status code: ${response.statusCode}');
     }
