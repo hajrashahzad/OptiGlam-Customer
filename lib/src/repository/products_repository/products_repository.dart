@@ -15,9 +15,6 @@ class ProductRepository extends GetxController {
 
   Future<List<ProductModel>> getAllProducts(String category) async {
     final snapshot = await _db.collection("Products").where('category', isEqualTo: category).get();
-    print(ProductModel.fromSnapshot(snapshot.docs[0]));
-    print(ProductModel.fromSnapshot(snapshot.docs[1]));
-    print(ProductModel.fromSnapshot(snapshot.docs[2]));
     final productData = snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
     return productData;
   }

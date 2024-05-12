@@ -13,7 +13,7 @@ class ProfileInformationContainer extends StatelessWidget {
     if (key == 'Name') { return userData.fullName; }
     else if (key == 'Email Address') { return userData.email; }
     else if (key == 'Phone Number') { return userData.phone; }
-    else if (key == 'MST Skin Tone Value') { return userData.mstSkintone.toString(); }
+    else if (key == 'MST Skin Tone Value') { return userData.mstSkintone; }
     else if (key == 'Undertone') { return userData.undertone; }    
   }
 

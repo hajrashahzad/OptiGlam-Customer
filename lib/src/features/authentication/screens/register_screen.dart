@@ -231,7 +231,7 @@ class RegisterScreen extends StatelessWidget {
                                       email: controller.email.text.trim(),
                                       phone: controller.phoneNumber.text.trim(),
                                       location: controller.location.text,
-                                      mstSkintone: 3,
+                                      mstSkintone: '3',
                                       undertone: 'Warm'
                                     );
                                     RegisterScreenController.instance.registerUser(user, controller.password.text.trim());

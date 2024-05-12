@@ -96,7 +96,9 @@ class PreviewScreen extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed:
                           imagePickerController.isLengthGreaterThan3.value
-                              ? () {}
+                              ? () async {
+                                await imagePickerController.sendImagesToServer();
+                              }
                               : null,
                       style: imagePickerController.isLengthGreaterThan3.value
                           ? ButtonStyle(

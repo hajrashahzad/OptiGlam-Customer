@@ -6,7 +6,7 @@ class UserModel {
   final String email;
   final String phone;
   final String location;
-  final int mstSkintone;
+  final String mstSkintone;
   final String undertone;
 
   const UserModel({
