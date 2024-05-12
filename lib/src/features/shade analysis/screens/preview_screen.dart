@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:optiglamcustomer/src/features/shade%20analysis/screens/skintone_analysis_result.dart';
 import '../../../constants/constants.dart';
 import 'dart:io';
 import '../controllers/image_picker_controller.dart';
@@ -96,7 +97,9 @@ class PreviewScreen extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed:
                           imagePickerController.isLengthGreaterThan3.value
-                              ? () {}
+                              ? () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SkinToneAnalysisResult()));
+                          }
                               : null,
                       style: imagePickerController.isLengthGreaterThan3.value
                           ? ButtonStyle(

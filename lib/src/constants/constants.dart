@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 const kBabyPink = Color(0xFFFEEBED);
 const kBarbiePink = Color(0xFFEF808E);
+const kBarbiePinkTransparent = Color(0x2FEF808E);
 const kBlack = Color(0xFF05040B);
 const kSeaBlue = Color(0xFF05735A);
 const kGrey = Color(0xFF898989);
