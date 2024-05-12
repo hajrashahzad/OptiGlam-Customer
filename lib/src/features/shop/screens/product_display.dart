@@ -135,7 +135,7 @@ class ProductDisplayButton extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      displayName,
+                      shadeName,
                       style: kSmall14Black,
                       overflow: TextOverflow.ellipsis,
                     ),

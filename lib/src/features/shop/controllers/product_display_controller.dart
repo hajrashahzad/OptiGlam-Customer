@@ -9,6 +9,10 @@ class DisplayController extends GetxController {
   var productList = <ProductModel>[].obs;
   var isLoading = false.obs;
 
+  int convertDecimalToHexInt(int decimal) {
+    return 0xFF000000 | decimal;
+  }
+
   @override
   void onInit() async {
     super.onInit();
@@ -35,10 +39,11 @@ class DisplayController extends GetxController {
         final List<dynamic> dynamicList = res['results'];
         final List<Map<String, dynamic>> products = dynamicList.map((product) => product as Map<String, dynamic>).toList();
         productList.clear();
+        int idx = 1;
         products.forEach((product) {
           productList.add(
             ProductModel(
-              id: 1,
+              id: idx,
               productName: product['cosmeticName'],
               productPrice: random.nextInt(5001 - 3000) + 3000,
               productDescription:
@@ -47,10 +52,11 @@ class DisplayController extends GetxController {
               brandName: product['cosmeticBrand'],
               shadeNames: [product['cosmeticShade']],
               productShade: product['cosmeticShade'],
-              hexCodes: [0xFFFFDAAE],
+              hexCodes: [convertDecimalToHexInt(product['foundationColorCode'])],
               category: 'Face'
             )
           );
+          idx++;
         });
       } else {
         print('Failed to get recommendations. Status code: ${response.statusCode}');

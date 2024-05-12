@@ -1,13 +1,34 @@
 import 'package:get/get.dart';
 import 'package:optiglamcustomer/src/features/shop/models/product_model.dart';
 import '../models/cart_element_model.dart';
+import 'package:optiglamcustomer/src/repository/authentication_repository/authentication_repository.dart';
+import 'package:optiglamcustomer/src/repository/user_repository/user_repository.dart';
+import 'package:optiglamcustomer/src/features/authentication/models/user_model.dart';
 class CartController extends GetxController{
   static CartController get find => Get.find();
+  final AuthenticationRepository _authRepo = Get.find();
+  final UserRepository _userRepo = Get.find();
+  final Rx<UserModel?> user = Rx<UserModel?>(null);
   RxList<CartElement> cartList = <CartElement>[].obs;
   List<RxInt> quantities = [];
   RxInt itemCount = 0.obs;
   RxDouble subtotal = 0.0.obs;
   int tempIndex = 0;
+
+  @override
+  void onInit() async {
+    super.onInit();
+    await fetchUserDetails();
+  }
+
+  Future<void> fetchUserDetails() async {
+    final email = _authRepo.firebaseUser.value?.email;
+    if (email != null) {
+      UserModel? userDetails = await _userRepo.getUserDetails(email);
+      user.value = userDetails;
+    }
+  }
+
   bool isAlreadyInCart(ProductModel prod){
     for(var i =0; i < cartList.length; i++){
       if (prod.id == cartList.value[i].product.id){
