@@ -7,7 +7,12 @@ import '../controllers/product_display_controller.dart';
 import '../models/product_model.dart';
 
 class ProductDisplay extends StatelessWidget {
-  ProductDisplay({super.key, required this.category});
+  ProductDisplay({super.key, required this.category}) {
+    if (Get.isRegistered<DisplayController>()) {
+      Get.delete<DisplayController>();
+    }
+    Get.put(DisplayController());
+  }
   String category;
   DisplayController displayController = Get.put(DisplayController());
   @override
@@ -44,36 +49,18 @@ class ProductDisplay extends StatelessWidget {
               height: 20,
             ),
             Expanded(
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: displayController.productList.length,
-                itemBuilder: (context, index) => ProductDisplayButton(
-                  product: displayController.productList[index],
-                ),
-              )
-              // child: FutureBuilder(
-              //   future: displayController.getProductsData(category),
-              //   builder: (context, snapshot) {
-              //     // if (snapshot.connectionState == ConnectionState.done) {
-              //     //   if (snapshot.hasData) {
-                      // List<ProductModel> productsData = snapshot.data as List<ProductModel>;
-                      // return ListView.builder(
-                      //   scrollDirection: Axis.vertical,
-                      //   itemCount: productsData.length,
-                      //   itemBuilder: (context, index) => ProductDisplayButton(
-                      //     product: productsData[index],
-                      //   ),
-                      // );
-              //     //   }
-              //     //   else {
-              //     //     return const CircularProgressIndicator();
-              //     //   }
-              //     // }
-              //     // else {
-              //     //   return const CircularProgressIndicator();
-              //     // }
-              //   }
-              // ),
+              child: Obx(() {
+                if (displayController.isLoading.value) {
+                  return const CircularProgressIndicator();
+                } else if (displayController.productList.isEmpty) {
+                  return const Text("No products found.");
+                } else {
+                  return ListView.builder(
+                    itemCount: displayController.productList.length,
+                    itemBuilder: (context, index) => ProductDisplayButton(product: displayController.productList[index]),
+                  );
+                }
+              }),
             ),
           ],
         ),
@@ -83,58 +70,81 @@ class ProductDisplay extends StatelessWidget {
 }
 
 class ProductDisplayButton extends StatelessWidget {
+  final ProductModel product;
+  
   ProductDisplayButton({
     super.key,
     required this.product,
   });
-  final ProductModel product;
+
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails(product: product)));
-      },
-      child: Container(
-        width: MediaQuery.of(context).size.width * 0.9,
-        decoration: BoxDecoration(
-          color: kBackgroundGrey,
-          borderRadius: BorderRadius.circular(30),
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                  color: kGrey,
-                  borderRadius: const BorderRadius.horizontal(
-                      left: Radius.circular(30), right: Radius.zero),
-                  image: DecorationImage(
-                    image: AssetImage(product.imgURL),
-                    fit: BoxFit.cover,
-                  )),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product.productName,
-                    style: kNormalBlack,
-                  ),
-                  Text(
-                    '${product.productPrice.toString()} PKR',
-                    style: kSmall14Grey,
-                  ),
-                  // Text(
-                  //   product.productShade,
-                  //   style: kSmall14Grey,
-                  // ),
-                ],
+
+    final int maxChars = 15;
+    String displayName = product.productName.length > maxChars
+      ? '${product.productName.substring(0, maxChars)}...'
+      : product.productName;
+
+    String shadeName = product.productShade.length > maxChars
+      ? 'Shade: ${product.productShade.substring(0, maxChars)}...'
+      : 'Shade: ${product.productShade}';
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails(product: product)));
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: kBabyPink,
+            borderRadius: BorderRadius.circular(25),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                offset: Offset.fromDirection(-4),
+                blurRadius: 1,
               ),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: kBackgroundGrey,
+                    borderRadius: BorderRadius.circular(15),
+                    image: DecorationImage(
+                      image: AssetImage(product.imgURL), // Changed from AssetImage to NetworkImage
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      displayName,
+                      style: kRegularBarbiePinkH5,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      displayName,
+                      style: kSmall14Black,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text('${product.productPrice} PKR', style: kSmall14Black),
+                  ],
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

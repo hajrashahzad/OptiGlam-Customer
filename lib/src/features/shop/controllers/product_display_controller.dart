@@ -1,62 +1,64 @@
 import 'package:get/get.dart';
-import '../models/product_model.dart';
-import 'package:optiglamcustomer/src/repository/products_repository/products_repository.dart';
+import '../../shop/models/product_model.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'dart:math';
 
-class DisplayController extends GetxController{
-  static DisplayController get find => Get.put(DisplayController());
+class DisplayController extends GetxController {
+  Random random = Random();
+  var productList = <ProductModel>[].obs;
+  var isLoading = false.obs;
 
-  final _productRepo = Get.put(ProductRepository());
-
-  int decimalToHex(int decimal) {
-  // Convert the decimal to a hex string using toRadixString(16)
-  return int.parse(decimal.toRadixString(16), radix: 16);
-}
-
-  List<ProductModel> productList = [
-    ProductModel(
-      productName: 'Sheer Glow Foundation',
-      productPrice: 5000,
-      productDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      id: 1,
-      imgURL: 'assets/images/foundation-sample.jpg',
-      brandName: 'NARS',
-      shadeNames: ['Barcelona-M4'],
-      hexCodes: [0xFF9F5B34],
-      productShade: 'Barcelona-M4', 
-      category: 'Face'
-    ),
-    ProductModel(
-      productName: 'HYDRA FOUNDATION',
-      productPrice: 4500,
-      productDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      id: 1,
-      imgURL: 'assets/images/foundation-sample.jpg',
-      brandName: 'SmashBox',
-      shadeNames: ['2.15'],
-      hexCodes: [0xFFCB814F],
-      productShade: '2.15', 
-      category: 'Face'
-    ),
-    ProductModel(
-      productName: 'Longwear Makeup',
-      productPrice: 3000,
-      productDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      id: 2,
-      imgURL: 'assets/images/foundation-sample.jpg',
-      brandName: 'Revlon',
-      shadeNames: ['True Beige-320'],
-      hexCodes: [0xFFFFDAAE],
-      productShade: 'True Beige-320', 
-      category: 'Face'
-    )
-  ];
-
-  Future<List<ProductModel>> getProductsData(String category) async {
-    List<ProductModel> products = await _productRepo.getAllProducts(category);
-    productList = products;
-    return productList;
+  @override
+  void onInit() async {
+    super.onInit();
+    await getProducts();
   }
-  List<ProductModel> getList(){
-    return productList;
+
+  @override
+  void onReady() async {
+    super.onReady();
+    await getProducts();
+  }
+
+  Future<void> getProducts() async {
+    isLoading(true);
+    try {      
+      final url = Uri.parse('http://192.168.43.192:8000/get-products');
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> res = jsonDecode(response.body);
+        final List<dynamic> dynamicList = res['results'];
+        final List<Map<String, dynamic>> products = dynamicList.map((product) => product as Map<String, dynamic>).toList();
+        productList.clear();
+        products.forEach((product) {
+          productList.add(
+            ProductModel(
+              id: 1,
+              productName: product['cosmeticName'],
+              productPrice: random.nextInt(5001 - 3000) + 3000,
+              productDescription:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+              imgURL: 'assets/images/foundation-sample.jpg',
+              brandName: product['cosmeticBrand'],
+              shadeNames: [product['cosmeticShade']],
+              productShade: product['cosmeticShade'],
+              hexCodes: [0xFFFFDAAE],
+              category: 'Face'
+            )
+          );
+        });
+      } else {
+        print('Failed to get recommendations. Status code: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error fetching recommendations: $e');
+    } finally {
+      isLoading(false);
+    }
   }
 }

@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:optiglamcustomer/src/features/shop/screens/product_display.dart';
 import '../../../constants/constants.dart';
 import '../../../common widgets/custom_app_bar.dart';
-import '../controllers/product_display_controller.dart';
 import 'package:get/get.dart';
 
 class Shop extends StatelessWidget {
   Shop({super.key});
-  DisplayController displayController = Get.put(DisplayController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -55,8 +53,6 @@ class Shop extends StatelessWidget {
                       children: [
                         TextButton(
                           onPressed: (){
-                            //displayController.getProductsData('Face');
-                            displayController.getList();
                             Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDisplay(category: 'Face')));
                           },
                           child: SizedBox(

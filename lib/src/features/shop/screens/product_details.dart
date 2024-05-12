@@ -10,7 +10,12 @@ import '../controllers/product_details_controller.dart';
 ///Product ID is being set when in the ProductDetailsController
 ///get Product details on the basis of the ID in the controller
 class ProductDetails extends StatelessWidget {
-  ProductDetails({super.key, required this.product});
+  ProductDetails({super.key, required this.product}) {
+    if (Get.isRegistered<ProductDetailsController>()) {
+      Get.delete<ProductDetailsController>();
+    }
+    Get.put(ProductDetailsController());
+  }
   ProductModel product;
   final ProductDetailsController detailsController = Get.put(ProductDetailsController());
   final CartController cartController = Get.put(CartController());
